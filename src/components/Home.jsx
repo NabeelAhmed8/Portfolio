@@ -2,21 +2,21 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <section id="home" className="relative w-full min-h-[calc(100vh-5rem)] flex items-center justify-center py-12 sm:py-20 overflow-hidden">
+    <section id="home" className="relative w-full h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
       {/* Glow Effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-48 sm:w-96 h-48 sm:h-96 glow-cyan rounded-full pointer-events-none -z-10 opacity-30 sm:opacity-70" />
       <div className="absolute bottom-10 right-1/4 w-40 sm:w-80 h-40 sm:h-80 glow-indigo rounded-full pointer-events-none -z-10 opacity-30 sm:opacity-70" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center w-full my-auto">
         
         {/* Availability Badge */}
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[11px] sm:text-xs font-medium mb-3 sm:mb-5">
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[11px] sm:text-xs font-medium mb-3 sm:mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
           <span>Available for New Projects</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-3 sm:mb-6 leading-tight">
+        <h1 className="text-xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-3 sm:mb-5 leading-tight">
           Hi, I’m <span className="bg-gradient-to-r from-sky-400 to-white bg-clip-text text-transparent">Nabeel Ahmed Dhillon</span>
           <br />
           <span className="text-slate-300 text-base sm:text-3xl lg:text-5xl font-bold mt-2 block">
@@ -25,12 +25,12 @@ export default function Home() {
         </h1>
 
         {/* Description */}
-        <p className="max-w-lg mx-auto text-xs sm:text-base text-slate-400 mb-6 sm:mb-8 leading-relaxed px-2">
+        <p className="max-w-lg mx-auto text-xs sm:text-base text-slate-400 mb-5 sm:mb-7 leading-relaxed px-2">
           Crafting clean, responsive web interfaces, modern landing pages, and interactive digital user experiences with React and Tailwind CSS.
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-5 sm:mb-8">
           <a
             href="#projects"
             className="flex items-center gap-1.5 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-primary text-dark-900 font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-105 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
