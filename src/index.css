@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+/* ========================================
+   SKY BLUE + BLACK THEME
+======================================== */
+
+:root {
+  --primary: #38bdf8;
+  --primary-dark: #0ea5e9;
+  --primary-deep: #0284c7;
+
+  --black: #050505;
+  --black-soft: #0a0a0a;
+  --black-card: #101010;
+  --black-light: #171717;
+
+  --white: #ffffff;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+
+  --border: rgba(56, 189, 248, 0.16);
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ========================================
+   BASE
+======================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--text);
+    font-family: var(--font-sans);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(56, 189, 248, 0.3);
+    color: #ffffff;
+  }
+}
+
+/* ========================================
+   MAIN BACKGROUND
+======================================== */
+
+.page-glow {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(56, 189, 248, 0.1),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(14, 165, 233, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(56, 189, 248, 0.06),
+      transparent 35%
+    ),
+    #050505;
+}
+
+/* ========================================
+   GLASS NAVBAR
+======================================== */
+
+.glass-nav {
+  background: rgba(5, 5, 5, 0.78);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(56, 189, 248, 0.12);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================
+   GLASS CARD
+======================================== */
+
+.glass-card {
+  background: rgba(16, 16, 16, 0.72);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(56, 189, 248, 0.12);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(20, 20, 20, 0.9);
+
+  border-color: rgba(56, 189, 248, 0.4);
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(56, 189, 248, 0.08);
+}
+
+/* ========================================
+   SKY BLUE GLOW
+======================================== */
+
+.glow-cyan {
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.18) 0%,
+    rgba(14, 165, 233, 0.08) 40%,
+    transparent 72%
+  );
+}
+
+.glow-indigo {
+  background: radial-gradient(
+    circle,
+    rgba(125, 211, 252, 0.12) 0%,
+    rgba(56, 189, 248, 0.06) 45%,
+    transparent 72%
+  );
+}
+
+/* ========================================
+   SKY BLUE SECTION
+======================================== */
+
+.sky-section {
+  background:
+    linear-gradient(
+      180deg,
+      #050505 0%,
+      #080808 50%,
+      #050505 100%
+    );
+}
+
+/* ========================================
+   PRIMARY BUTTON
+======================================== */
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    #38bdf8,
+    #0ea5e9
+  );
+
+  color: #000000;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 8px 25px rgba(14, 165, 233, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 35px rgba(14, 165, 233, 0.35);
+}
+
+/* ========================================
+   OUTLINE BUTTON
+======================================== */
+
+.btn-outline {
+  background: transparent;
+
+  color: #38bdf8;
+
+  border: 1px solid rgba(56, 189, 248, 0.45);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(56, 189, 248, 0.08);
+
+  border-color: #38bdf8;
+
+  color: #7dd3fc;
+
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   SKY BLUE TEXT
+======================================== */
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    #7dd3fc,
+    #38bdf8,
+    #0ea5e9
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================
+   SKY BLUE BORDER
+======================================== */
+
+.sky-border {
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.sky-border:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+======================================== */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #164e63;
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS
+======================================== */
+
+a,
+button {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
