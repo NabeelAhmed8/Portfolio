@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <section id="home" className="relative w-full flex items-center justify-center py-2 sm:py-6 overflow-hidden">
+    <section id="home" className="relative w-full min-h-[calc(100vh-5rem)] flex items-center justify-center py-12 sm:py-20 overflow-hidden">
       {/* Glow Effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-48 sm:w-96 h-48 sm:h-96 glow-cyan rounded-full pointer-events-none -z-10 opacity-30 sm:opacity-70" />
       <div className="absolute bottom-10 right-1/4 w-40 sm:w-80 h-40 sm:h-80 glow-indigo rounded-full pointer-events-none -z-10 opacity-30 sm:opacity-70" />
@@ -10,30 +10,30 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center w-full">
         
         {/* Availability Badge */}
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[11px] sm:text-xs font-medium mb-2 sm:mb-4">
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[11px] sm:text-xs font-medium mb-3 sm:mb-5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
           <span>Available for New Projects</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-2 sm:mb-5 leading-tight">
+        <h1 className="text-xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-3 sm:mb-6 leading-tight">
           Hi, I’m <span className="bg-gradient-to-r from-sky-400 to-white bg-clip-text text-transparent">Nabeel Ahmed Dhillon</span>
           <br />
-          <span className="text-slate-300 text-base sm:text-3xl lg:text-5xl font-bold mt-1 block">
+          <span className="text-slate-300 text-base sm:text-3xl lg:text-5xl font-bold mt-2 block">
             Frontend Web Developer
           </span>
         </h1>
 
         {/* Description */}
-        <p className="max-w-lg mx-auto text-[11px] sm:text-base text-slate-400 mb-4 sm:mb-8 leading-relaxed px-2">
+        <p className="max-w-lg mx-auto text-xs sm:text-base text-slate-400 mb-6 sm:mb-8 leading-relaxed px-2">
           Crafting clean, responsive web interfaces, modern landing pages, and interactive digital user experiences with React and Tailwind CSS.
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mb-4 sm:mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-10">
           <a
             href="#projects"
-            className="flex items-center gap-1.5 px-3.5 sm:px-6 py-2 sm:py-3 rounded-xl bg-primary text-dark-900 font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-105 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
+            className="flex items-center gap-1.5 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-primary text-dark-900 font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-105 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
           >
             <span>View Projects</span>
             <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,14 +42,14 @@ export default function Home() {
           </a>
           <a
             href="#contact"
-            className="px-3.5 sm:px-6 py-2 sm:py-3 rounded-xl glass-card text-white font-medium hover:border-slate-500 hover:scale-105 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
+            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl glass-card text-white font-medium hover:border-slate-500 hover:scale-105 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
           >
             Contact Me
           </a>
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center justify-center gap-2.5 sm:gap-4 text-slate-400">
+        <div className="flex items-center justify-center gap-3 sm:gap-4 text-slate-400">
           <a href="https://github.com" target="_blank" rel="noreferrer" className="p-2 rounded-lg glass-card hover:text-primary transition">
             <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
