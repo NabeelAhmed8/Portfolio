@@ -106,7 +106,7 @@ export default function HomePage() {
         <div className="pt-12 mt-12 border-t border-neutral-800 flex flex-wrap items-center gap-4 text-xs font-bold uppercase">
           <span className="text-neutral-500">Channels:</span>
           <a
-            href="https://github.com"
+            href="https://github.com/NabeelAhmed8"
             target="_blank"
             rel="noreferrer"
             className="hover:bg-white hover:text-black px-2 py-0.5 border border-white text-white"
@@ -114,7 +114,7 @@ export default function HomePage() {
             GitHub ↗
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/nabeel-ahmed-447861238/"
             target="_blank"
             rel="noreferrer"
             className="hover:bg-white hover:text-black px-2 py-0.5 border border-white text-white"

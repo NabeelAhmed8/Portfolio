@@ -53,7 +53,7 @@ export default function Navbar({ onOpenMessages }) {
             <button
               onClick={onOpenMessages}
               className="text-xs font-bold uppercase tracking-wider text-neutral-400 hover:text-white px-3 py-1.5 border border-neutral-800 hover:border-white cursor-pointer ml-1 transition-colors"
-              title="View Inquiries Log"
+              title="Track Sent Inquiries"
             >
               Inquiries ✉
             </button>
@@ -106,7 +106,7 @@ export default function Navbar({ onOpenMessages }) {
               }}
               className="w-full text-left font-bold text-sm uppercase px-3 py-2 text-neutral-300 hover:bg-white hover:text-black cursor-pointer transition-colors"
             >
-              Inquiries Archive ✉
+              Inquiries Status ✉
             </button>
           )}
 

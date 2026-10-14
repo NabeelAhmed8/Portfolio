@@ -3,10 +3,9 @@ import { sendContact } from '../services/api';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [statusMessage, setStatusMessage] = useState('');
+  const [status, setStatus] = useState({ type: '', message: '' });
 
   const emailAddress = 'nabeelprojects@hotmail.com';
 
@@ -26,31 +25,48 @@ export default function ContactPage() {
     if (!form.name || !form.email || !form.message) return;
 
     setIsSubmitting(true);
-    setStatusMessage('');
+    setStatus({ type: '', message: '' });
 
     try {
       const result = await sendContact(form);
 
-      if (result.success) {
-        setSent(true);
-        setStatusMessage('Message Dispatched & Logged Successfully ✓');
+      if (result && result.success) {
+        // Save to browser localStorage so client can track their dispatched inquiries
+        try {
+          const stored = JSON.parse(localStorage.getItem('user_inquiries') || '[]');
+          stored.unshift({
+            id: `INQ-${Date.now().toString().slice(-4)}`,
+            name: form.name,
+            email: form.email,
+            message: form.message,
+            timestamp: new Date().toISOString(),
+            status: 'Dispatched to Nabeel ✓',
+          });
+          localStorage.setItem('user_inquiries', JSON.stringify(stored));
+        } catch (_) {}
+
+        setStatus({
+          type: 'success',
+          message: 'Inquiry Dispatched Successfully to Nabeel ✓',
+        });
         setForm({ name: '', email: '', message: '' });
       } else {
-        setSent(true);
-        setStatusMessage(result.error || 'Message Dispatched Successfully ✓');
-        setForm({ name: '', email: '', message: '' });
+        setStatus({
+          type: 'error',
+          message: result?.error || 'Failed to dispatch message. Please contact via WhatsApp.',
+        });
       }
     } catch {
-      // Graceful client fallback when backend server is offline
-      setSent(true);
-      setStatusMessage('Transmission Received (Local Fallback) ✓');
-      setForm({ name: '', email: '', message: '' });
+      // Fake local fallback removed! Show honest notification to reach out directly.
+      setStatus({
+        type: 'error',
+        message: 'Server offline. Please reach out directly via WhatsApp (+92 308 7300960) or Email.',
+      });
     } finally {
       setIsSubmitting(false);
       setTimeout(() => {
-        setSent(false);
-        setStatusMessage('');
-      }, 5000);
+        setStatus({ type: '', message: '' });
+      }, 7000);
     }
   };
 
@@ -135,7 +151,7 @@ export default function ContactPage() {
               </div>
               <div className="flex flex-col gap-2 pt-1 font-bold">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/NabeelAhmed8"
                   target="_blank"
                   rel="noreferrer"
                   className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
@@ -144,7 +160,7 @@ export default function ContactPage() {
                   <span>↗</span>
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/nabeel-ahmed-447861238/"
                   target="_blank"
                   rel="noreferrer"
                   className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
@@ -249,12 +265,18 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-white text-black font-black text-sm uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white disabled:opacity-50 cursor-pointer transition-colors"
+                  className={`w-full py-4 font-black text-sm uppercase tracking-wider border-2 transition-colors cursor-pointer disabled:opacity-50 ${
+                    status.type === 'error'
+                      ? 'bg-red-950 text-white border-red-500'
+                      : status.type === 'success'
+                      ? 'bg-green-950 text-white border-green-500'
+                      : 'bg-white text-black border-white hover:bg-black hover:text-white'
+                  }`}
                 >
                   {isSubmitting
                     ? 'Dispatching Message...'
-                    : sent
-                    ? statusMessage
+                    : status.message
+                    ? status.message
                     : 'Send Message →'}
                 </button>
               </div>

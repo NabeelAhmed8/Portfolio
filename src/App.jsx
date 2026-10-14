@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Messages from './components/Messages';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopOnRoute from './components/ScrollToTopOnRoute';
+import WhatsAppButton from './components/WhatsAppButton';
 
 // Separate Page Components
 import HomePage from './pages/HomePage';
@@ -58,6 +59,9 @@ export default function App() {
 
       {/* Global Footer */}
       <Footer />
+
+      {/* Floating WhatsApp Quick Action (Bottom Left) */}
+      <WhatsAppButton />
 
       {/* Floating Scroll to Top Button */}
       <ScrollToTop />

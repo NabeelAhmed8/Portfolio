@@ -1,52 +1,44 @@
-import { useState, useEffect, useCallback } from 'react';
-import { getMessages } from '../services/api';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Messages({ isOpen, onClose }) {
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [selectedMessage, setSelectedMessage] = useState(null);
-
-  const fetchTransmissions = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await getMessages();
-      if (res.success) {
-        setMessages(res.data.reverse()); // latest first
-      } else {
-        setError(res.error || 'Failed to retrieve messages');
-      }
-    } catch (err) {
-      setError(err.message || 'Network error');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const [userInquiries, setUserInquiries] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const timer = window.setTimeout(() => {
-      void fetchTransmissions();
-    }, 0);
-
-    return () => window.clearTimeout(timer);
-  }, [isOpen, fetchTransmissions]);
+    try {
+      const stored = JSON.parse(localStorage.getItem('user_inquiries') || '[]');
+      setUserInquiries(Array.isArray(stored) ? stored : []);
+    } catch {
+      setUserInquiries([]);
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
+  const handleClearHistory = () => {
+    localStorage.removeItem('user_inquiries');
+    setUserInquiries([]);
+  };
+
+  const handleNavigateToContact = () => {
+    onClose();
+    navigate('/contact');
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-xs">
-      <div className="w-full max-w-4xl bg-black border-4 border-white shadow-2xl flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-xs">
+      <div className="w-full max-w-2xl bg-black border-4 border-white shadow-2xl flex flex-col max-h-[88vh]">
         
         {/* Header Bar */}
         <div className="bg-white text-black p-4 flex items-center justify-between font-black uppercase text-xs sm:text-sm tracking-wider">
           <div className="flex items-center gap-3">
-            <span className="inline-block w-3 h-3 bg-black animate-pulse" />
-            <span>Transmissions Archive (GET /api/contact/messages)</span>
-            <span className="border border-black px-2 py-0.5 text-[11px]">
-              {messages.length} Records
+            <span className="inline-block w-2.5 h-2.5 bg-black animate-pulse" />
+            <span>My Inquiries Status</span>
+            <span className="border border-black px-2 py-0.5 text-[11px] font-mono">
+              {userInquiries.length} {userInquiries.length === 1 ? 'Dispatch' : 'Dispatches'}
             </span>
           </div>
           <button
@@ -57,84 +49,93 @@ export default function Messages({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Toolbar */}
-        <div className="border-b-2 border-white p-3 flex items-center justify-between text-xs bg-black text-white">
-          <div className="text-neutral-400 uppercase tracking-widest font-mono">
-            Status: {loading ? 'Fetching...' : error ? 'Error / Offline' : 'Operational'}
+        {/* Informational Sub-bar */}
+        <div className="border-b-2 border-white p-3 flex flex-wrap items-center justify-between gap-2 text-xs bg-black text-white">
+          <div className="text-neutral-400 font-mono text-[11px] uppercase tracking-wider">
+            Channel: Direct Portfolio Dispatch • Monitored Daily
           </div>
-          <button
-            onClick={fetchTransmissions}
-            disabled={loading}
-            className="px-4 py-1.5 bg-white text-black font-black uppercase text-xs border border-white hover:bg-black hover:text-white disabled:opacity-50 cursor-pointer"
-          >
-            {loading ? 'Refreshing...' : 'Refresh Stream ↻'}
-          </button>
+          {userInquiries.length > 0 && (
+            <button
+              onClick={handleClearHistory}
+              className="text-neutral-400 hover:text-white text-[11px] font-bold uppercase underline decoration-neutral-600 cursor-pointer"
+            >
+              Clear Log
+            </button>
+          )}
         </div>
 
         {/* Content Body */}
-        <div className="overflow-y-auto p-4 sm:p-6 space-y-4 grow">
-          {error && (
-            <div className="p-4 border-2 border-white bg-neutral-950 text-white text-xs space-y-1">
-              <div className="font-black text-white uppercase tracking-wider">Connection Notice</div>
-              <p className="text-neutral-400">
-                Could not connect to backend endpoint. Ensure `npm run dev` or `npm start` is active in the `backend/` folder.
+        <div className="overflow-y-auto p-5 sm:p-6 space-y-4 grow">
+          {userInquiries.length === 0 ? (
+            <div className="text-center py-12 px-4 border-2 border-dashed border-neutral-800 space-y-4">
+              <div className="text-sm font-black uppercase tracking-wider text-white">
+                No Inquiries Sent Yet
+              </div>
+              <p className="text-xs text-neutral-400 font-light max-w-md mx-auto leading-relaxed">
+                You haven&apos;t submitted a project inquiry or contact brief from this device. Once you submit a message, its dispatch status will be tracked here.
               </p>
-            </div>
-          )}
-
-          {messages.length === 0 && !loading && !error && (
-            <div className="text-center py-16 border-2 border-dashed border-neutral-700 text-neutral-400 text-xs uppercase tracking-widest">
-              Zero transmissions logged in backend archive.
-            </div>
-          )}
-
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              onClick={() => setSelectedMessage(selectedMessage?.id === msg.id ? null : msg)}
-              className="border-2 border-white bg-black hover:bg-neutral-950 transition-colors p-4 cursor-pointer text-left"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-800 pb-2 text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="font-black text-white uppercase">{msg.name}</span>
-                  <span className="text-neutral-400 font-mono">({msg.email})</span>
-                </div>
-                <div className="text-neutral-500 font-mono text-[11px]">
-                  {new Date(msg.timestamp).toLocaleString()}
-                </div>
+              <div className="pt-2 flex flex-wrap justify-center gap-3">
+                <button
+                  onClick={handleNavigateToContact}
+                  className="px-4 py-2 bg-white text-black font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white cursor-pointer transition-colors"
+                >
+                  Send Inquiry Now →
+                </button>
+                <a
+                  href="https://wa.me/923087300960?text=Hello%20Nabeel%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project%20with%20you."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-[#25D366] text-white font-black text-xs uppercase tracking-wider border border-[#1ebd5b] hover:bg-[#20ba59] cursor-pointer transition-colors"
+                >
+                  WhatsApp Quick Chat ↗
+                </a>
               </div>
-
-              <div className="mt-3 text-xs sm:text-sm font-light text-neutral-200 line-clamp-3 leading-relaxed">
-                {msg.message}
-              </div>
-
-              {selectedMessage?.id === msg.id && (
-                <div className="mt-4 pt-4 border-t border-dashed border-neutral-700 text-xs space-y-2 text-neutral-400 font-mono">
-                  <div><span className="text-white font-bold">Transmission ID:</span> {msg.id}</div>
-                  <div><span className="text-white font-bold">IP Source:</span> {msg.ip}</div>
-                  <div className="truncate"><span className="text-white font-bold">User-Agent:</span> {msg.userAgent}</div>
-                  <div className="pt-2">
-                    <a
-                      href={`mailto:${msg.email}?subject=Re: Portfolio Inquiry`}
-                      className="inline-block px-3 py-1 bg-white text-black font-black uppercase text-xs border border-white hover:bg-black hover:text-white"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Reply Directly ↗
-                    </a>
+            </div>
+          ) : (
+            userInquiries.map((inq) => (
+              <div
+                key={inq.id || inq.timestamp}
+                className="border-2 border-white bg-black p-5 space-y-3"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-800 pb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="bg-white text-black font-black text-xs px-2 py-0.5 uppercase">
+                      Sent &amp; Logged ✓
+                    </span>
+                    <span className="text-xs text-neutral-300 font-bold uppercase">
+                      {inq.name}
+                    </span>
+                  </div>
+                  <div className="text-neutral-500 font-mono text-[11px]">
+                    {new Date(inq.timestamp).toLocaleString()}
                   </div>
                 </div>
-              )}
-            </div>
-          ))}
+
+                <div>
+                  <div className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider mb-1">
+                    Your Message Brief:
+                  </div>
+                  <div className="text-xs sm:text-sm text-neutral-200 font-light leading-relaxed bg-neutral-950 p-3 border border-neutral-800">
+                    {inq.message}
+                  </div>
+                </div>
+
+                <div className="pt-1 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+                  <span>Target Reply: {inq.email}</span>
+                  <span className="text-neutral-300 font-bold">Response: &lt; 24h</span>
+                </div>
+              </div>
+            ))
+          )}
         </div>
 
         {/* Footer */}
-        <div className="border-t-2 border-white p-3 bg-black text-right text-xs text-neutral-400 font-mono">
-          Nabeel Ahmed Dhillon | Contact Inquiries
+        <div className="border-t-2 border-white p-3 bg-black flex items-center justify-between text-xs text-neutral-400 font-mono">
+          <span>Nabeel Ahmed Dhillon</span>
+          <span className="text-white font-bold">Multan, PK (UTC+5)</span>
         </div>
 
       </div>
     </div>
   );
 }
-

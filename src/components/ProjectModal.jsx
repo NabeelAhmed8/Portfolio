@@ -1,5 +1,14 @@
+const isValidUrl = (url) =>
+  typeof url === 'string' &&
+  url.trim() !== '' &&
+  url.trim() !== '#' &&
+  (url.startsWith('http://') || url.startsWith('https://'));
+
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
+
+  const hasLive = isValidUrl(project.liveUrl);
+  const hasGithub = isValidUrl(project.githubUrl);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-xs">
@@ -55,25 +64,44 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-neutral-800">
-            {project.liveUrl && project.liveUrl !== '#' && (
+            {hasLive ? (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-5 py-2.5 bg-white text-black font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white transition-colors"
+                className="px-5 py-2.5 bg-white text-black font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white transition-colors cursor-pointer"
               >
                 Launch Production Client ↗
               </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                title="Live client deployment in progress"
+                className="px-5 py-2.5 bg-neutral-900 text-neutral-500 font-bold text-xs uppercase tracking-wider border-2 border-neutral-800 opacity-60 cursor-not-allowed select-none"
+              >
+                Production Client (Pending)
+              </button>
             )}
-            {project.githubUrl && project.githubUrl !== '#' && (
+
+            {hasGithub ? (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-5 py-2.5 bg-black text-white font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black transition-colors"
+                className="px-5 py-2.5 bg-black text-white font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black transition-colors cursor-pointer"
               >
                 Inspect Repository
               </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                title="Repository currently private / in staging"
+                className="px-5 py-2.5 bg-neutral-900 text-neutral-500 font-bold text-xs uppercase tracking-wider border-2 border-neutral-800 opacity-60 cursor-not-allowed select-none"
+              >
+                Repository (Private)
+              </button>
             )}
           </div>
         </div>
@@ -82,4 +110,3 @@ export default function ProjectModal({ project, onClose }) {
     </div>
   );
 }
-
