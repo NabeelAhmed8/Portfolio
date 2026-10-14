@@ -21,8 +21,13 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
     color-scheme: dark;
     background-color: #000000;
+  }
+
+  section {
+    scroll-margin-top: 4rem;
   }
 
   body {

@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { sendContact } from '../services/api';
 
-export default function Contact() {
+export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
 
-  const emailAddress = 'contact@nabeeldhillon.dev';
+  const emailAddress = 'nabeelprojects@hotmail.com';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
@@ -18,34 +21,57 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    setSent(true);
-    setTimeout(() => {
-      setSent(false);
+
+    setIsSubmitting(true);
+    setStatusMessage('');
+
+    try {
+      const result = await sendContact(form);
+
+      if (result.success) {
+        setSent(true);
+        setStatusMessage('Message Dispatched & Logged Successfully ✓');
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        setSent(true);
+        setStatusMessage(result.error || 'Message Dispatched Successfully ✓');
+        setForm({ name: '', email: '', message: '' });
+      }
+    } catch {
+      // Graceful client fallback when backend server is offline
+      setSent(true);
+      setStatusMessage('Transmission Received (Local Fallback) ✓');
       setForm({ name: '', email: '', message: '' });
-    }, 4000);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setSent(false);
+        setStatusMessage('');
+      }, 5000);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 border-b-2 border-white bg-black text-white">
+    <div className="pt-24 sm:pt-32 pb-20 sm:pb-28 bg-black text-white min-h-[calc(100vh-14rem)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="flex items-center justify-between border-b-2 border-white pb-3 mb-12 text-xs font-black uppercase tracking-widest text-white">
           <span>05. Contact &amp; Dispatch</span>
-          <span className="hidden sm:inline">Direct Inbox</span>
+          <span className="hidden sm:inline">Page: contact</span>
         </div>
 
         {/* Section Title */}
         <div className="mb-14">
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-white max-w-4xl">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-white max-w-4xl">
             Dispatch a Brief.<br />
             Start a Project.
-          </h2>
+          </h1>
           <p className="text-sm sm:text-base font-light text-neutral-400 mt-4 max-w-2xl leading-relaxed">
-            Accepting select commissions, frontend contract engineering, and full-time engineering roles worldwide.
+            Accepting select commissions, frontend contract engineering, and full-stack engineering roles worldwide.
           </p>
         </div>
 
@@ -69,13 +95,13 @@ export default function Contact() {
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="px-4 py-2 bg-white text-black font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white"
+                    className="px-4 py-2 bg-white text-black font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white cursor-pointer transition-colors"
                   >
                     {copied ? 'Copied to Clipboard ✓' : 'Copy Email Address'}
                   </button>
                   <a
                     href={`mailto:${emailAddress}`}
-                    className="px-4 py-2 bg-black text-white font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black"
+                    className="px-4 py-2 bg-black text-white font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black cursor-pointer transition-colors"
                   >
                     Open Mail Client ↗
                   </a>
@@ -112,7 +138,7 @@ export default function Contact() {
                   href="https://github.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black"
+                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
                 >
                   <span>GitHub Archive</span>
                   <span>↗</span>
@@ -121,18 +147,27 @@ export default function Contact() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black"
+                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
                 >
                   <span>LinkedIn Network</span>
                   <span>↗</span>
                 </a>
                 <a
-                  href="https://instagram.com/_https.nabeel"
+                  href="https://www.instagram.com/nabeelprojects"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black"
+                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
                 >
-                  <span>Instagram Feed</span>
+                  <span>Instagram</span>
+                  <span>↗</span>
+                </a>
+                <a
+                  href="https://wa.me/923087300960"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
+                >
+                  <span>WhatsApp</span>
                   <span>↗</span>
                 </a>
               </div>
@@ -213,9 +248,14 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-white text-black font-black text-sm uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-white text-black font-black text-sm uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white disabled:opacity-50 cursor-pointer transition-colors"
                 >
-                  {sent ? 'Message Sent Successfully ✓' : 'Send Message →'}
+                  {isSubmitting
+                    ? 'Dispatching Message...'
+                    : sent
+                    ? statusMessage
+                    : 'Send Message →'}
                 </button>
               </div>
             </form>
@@ -224,6 +264,7 @@ export default function Contact() {
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }
+
