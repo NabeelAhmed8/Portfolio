@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Contact', path: '/contact' },
 ];
 
-export default function Navbar({ onOpenMessages }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -48,16 +48,6 @@ export default function Navbar({ onOpenMessages }) {
               {item.label}
             </NavLink>
           ))}
-
-          {onOpenMessages && (
-            <button
-              onClick={onOpenMessages}
-              className="text-xs font-bold uppercase tracking-wider text-neutral-400 hover:text-white px-3 py-1.5 border border-neutral-800 hover:border-white cursor-pointer ml-1 transition-colors"
-              title="Track Sent Inquiries"
-            >
-              Inquiries ✉
-            </button>
-          )}
 
           <Link
             to="/contact"
@@ -97,18 +87,6 @@ export default function Navbar({ onOpenMessages }) {
               {item.label}
             </NavLink>
           ))}
-
-          {onOpenMessages && (
-            <button
-              onClick={() => {
-                setIsOpen(false);
-                onOpenMessages();
-              }}
-              className="w-full text-left font-bold text-sm uppercase px-3 py-2 text-neutral-300 hover:bg-white hover:text-black cursor-pointer transition-colors"
-            >
-              Inquiries Status ✉
-            </button>
-          )}
 
           <Link
             to="/contact"

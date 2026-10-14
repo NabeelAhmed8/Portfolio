@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Messages from './components/Messages';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopOnRoute from './components/ScrollToTopOnRoute';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -16,7 +15,6 @@ import ExperiencePage from './pages/ExperiencePage';
 import ContactPage from './pages/ContactPage';
 
 export default function App() {
-  const [isMessagesOpen, setIsMessagesOpen] = useState(false);
 
   useEffect(() => {
     // Disable automatic browser scroll restoration on refresh
@@ -41,7 +39,7 @@ export default function App() {
       <ScrollToTopOnRoute />
 
       {/* Global Fixed Navbar */}
-      <Navbar onOpenMessages={() => setIsMessagesOpen(true)} />
+      <Navbar />
 
       {/* Dynamic Multi-Page Content */}
       <main className="grow">
@@ -65,12 +63,6 @@ export default function App() {
 
       {/* Floating Scroll to Top Button */}
       <ScrollToTop />
-
-      {/* Backend Contact Messages Modal (GET /api/contact/messages) */}
-      <Messages
-        isOpen={isMessagesOpen}
-        onClose={() => setIsMessagesOpen(false)}
-      />
     </div>
   );
 }

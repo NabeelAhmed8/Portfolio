@@ -31,18 +31,6 @@ export default function ContactPage() {
       const result = await sendContact(form);
 
       if (result && result.success) {
-        // Save to browser localStorage so client can track their dispatched inquiries
-        try {
-          const stored = JSON.parse(localStorage.getItem('user_inquiries') || '[]');
-          stored.unshift({
-            id: `INQ-${Date.now().toString().slice(-4)}`,
-            name: form.name,
-            timestamp: new Date().toISOString(),
-            status: 'Dispatched to Nabeel ✓',
-          });
-          localStorage.setItem('user_inquiries', JSON.stringify(stored));
-        } catch (_) {}
-
         setStatus({
           type: 'success',
           message: 'Inquiry Dispatched Successfully to Nabeel ✓',

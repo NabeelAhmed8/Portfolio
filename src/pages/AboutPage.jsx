@@ -63,8 +63,8 @@ export default function AboutPage() {
             {/* Scorecard */}
             <div className="border-2 border-white bg-black">
               <div className="border-b-2 border-white p-3.5 text-xs font-black uppercase bg-white text-black flex justify-between">
-                <span>Vital Metrics</span>
-                <span>Verified Record</span>
+                <span>Engineering Metrics</span>
+                <span>Active Profile</span>
               </div>
 
               <div className="grid grid-cols-2 divide-x-2 divide-y-2 divide-white">
@@ -79,28 +79,28 @@ export default function AboutPage() {
 
                 <div className="p-4">
                   <div className="text-4xl sm:text-5xl font-black text-white leading-none">
+                    10+
+                  </div>
+                  <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
+                    Core Technologies
+                  </div>
+                </div>
+
+                <div className="p-4">
+                  <div className="text-4xl sm:text-5xl font-black text-white leading-none">
                     100%
                   </div>
                   <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
-                    Responsive Fidelity
+                    Responsive Layout
                   </div>
                 </div>
 
                 <div className="p-4">
                   <div className="text-4xl sm:text-5xl font-black text-white leading-none">
-                    100
+                    24h
                   </div>
                   <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
-                    Lighthouse Target
-                  </div>
-                </div>
-
-                <div className="p-4">
-                  <div className="text-4xl sm:text-5xl font-black text-white leading-none">
-                    24/7
-                  </div>
-                  <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
-                    Async Availability
+                    Target Reply Window
                   </div>
                 </div>
               </div>
