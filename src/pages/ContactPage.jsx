@@ -37,8 +37,6 @@ export default function ContactPage() {
           stored.unshift({
             id: `INQ-${Date.now().toString().slice(-4)}`,
             name: form.name,
-            email: form.email,
-            message: form.message,
             timestamp: new Date().toISOString(),
             status: 'Dispatched to Nabeel ✓',
           });

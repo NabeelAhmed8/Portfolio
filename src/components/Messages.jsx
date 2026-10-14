@@ -8,13 +8,28 @@ export default function Messages({ isOpen, onClose }) {
   useEffect(() => {
     if (!isOpen) return;
 
+    // Lock background page scrolling
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Close on Escape key
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
     try {
       const stored = JSON.parse(localStorage.getItem('user_inquiries') || '[]');
       setUserInquiries(Array.isArray(stored) ? stored : []);
     } catch {
       setUserInquiries([]);
     }
-  }, [isOpen]);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -29,7 +44,12 @@ export default function Messages({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-xs">
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-xs"
+    >
       <div className="w-full max-w-2xl bg-black border-4 border-white shadow-2xl flex flex-col max-h-[88vh]">
         
         {/* Header Bar */}
@@ -65,7 +85,7 @@ export default function Messages({ isOpen, onClose }) {
         </div>
 
         {/* Content Body */}
-        <div className="overflow-y-auto p-5 sm:p-6 space-y-4 grow">
+        <div className="overflow-y-auto overscroll-contain p-5 sm:p-6 space-y-4 grow">
           {userInquiries.length === 0 ? (
             <div className="text-center py-12 px-4 border-2 border-dashed border-neutral-800 space-y-4">
               <div className="text-sm font-black uppercase tracking-wider text-white">
@@ -111,18 +131,25 @@ export default function Messages({ isOpen, onClose }) {
                   </div>
                 </div>
 
-                <div>
-                  <div className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider mb-1">
-                    Your Message Brief:
+                {/* Professional Status Statement (raw message hidden for privacy) */}
+                <div className="bg-neutral-950 p-4 border border-neutral-800 space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-black uppercase text-white tracking-wider flex items-center gap-2">
+                      <span className="w-2 h-2 bg-white inline-block animate-pulse" />
+                      Transmission Delivered to Nabeel
+                    </span>
+                    <span className="border border-neutral-700 text-neutral-400 text-[10px] font-mono uppercase px-2 py-0.5">
+                      Verified
+                    </span>
                   </div>
-                  <div className="text-xs sm:text-sm text-neutral-200 font-light leading-relaxed bg-neutral-950 p-3 border border-neutral-800">
-                    {inq.message}
-                  </div>
+                  <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                    Your project inquiry brief has been dispatched. Nabeel will review your requirements and respond directly to your provided email address.
+                  </p>
                 </div>
 
-                <div className="pt-1 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
-                  <span>Target Reply: {inq.email}</span>
-                  <span className="text-neutral-300 font-bold">Response: &lt; 24h</span>
+                <div className="pt-1 flex flex-wrap items-center justify-between gap-2 text-[11px] text-neutral-400 font-mono">
+                  <span>Channel: Direct Dispatch</span>
+                  <span className="text-white font-bold">Response Time: Within 24 Hours</span>
                 </div>
               </div>
             ))

@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 const isValidUrl = (url) =>
   typeof url === 'string' &&
   url.trim() !== '' &&
@@ -5,13 +7,37 @@ const isValidUrl = (url) =>
   (url.startsWith('http://') || url.startsWith('https://'));
 
 export default function ProjectModal({ project, onClose }) {
+  useEffect(() => {
+    if (!project) return;
+
+    // Lock background page scroll
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Handle Escape key
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [project, onClose]);
+
   if (!project) return null;
 
   const hasLive = isValidUrl(project.liveUrl);
   const hasGithub = isValidUrl(project.githubUrl);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-xs">
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-xs"
+    >
       <div className="w-full max-w-2xl bg-black border-4 border-white shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
         
         {/* Header */}
@@ -28,7 +54,7 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="p-6 sm:p-8 space-y-6 overflow-y-auto">
+        <div className="p-6 sm:p-8 space-y-6 overflow-y-auto overscroll-contain">
           <div>
             <div className="text-xs font-mono text-neutral-400 uppercase tracking-widest mb-1">
               Category: {project.category} • Year: {project.year || '2025'}
