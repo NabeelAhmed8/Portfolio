@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const experiences = [
   {
@@ -6,23 +6,23 @@ const experiences = [
     category: 'dev',
     company: 'Nexora Projects / Freelance',
     period: '2024 — Present',
-    location: 'Remote',
+    location: 'Remote Worldwide',
     points: [
-      'Developed responsive, modern interfaces using React, Vite, and Tailwind CSS.',
-      'Constructed modular web components with clean glassmorphic design and CSS animations.',
-      'Ensured cross-browser consistency and high performance on mobile devices.',
+      'Engineered responsive, accessible user interfaces using React, Vite, and Tailwind CSS.',
+      'Constructed modular, reusable component systems with zero redundant styling and predictable state flows.',
+      'Optimized cross-browser rendering, typographic hierarchy, and Lighthouse performance across mobile viewports.',
     ],
   },
   {
     role: 'Data Administrator',
     category: 'ops',
     company: 'Enterprise Administration Operations',
-    period: '4 Years',
+    period: '4 Years Duration',
     location: 'Multan, Pakistan',
     points: [
-      'Handled accurate record-keeping, office data processing, and document management.',
-      'Created structured spreadsheet templates for internal reporting and workflow tracking.',
-      'Maintained consistent data integrity across daily operational datasets.',
+      'Managed high-density office datasets, enterprise spreadsheets, and digital documentation repositories.',
+      'Architected structured reporting templates that accelerated workflow audits and eliminated duplicate entry.',
+      'Maintained consistent validation protocols and confidential dataset integrity across daily operational cycles.',
     ],
   },
   {
@@ -30,10 +30,10 @@ const experiences = [
     category: 'ops',
     company: 'Logistics Operations',
     period: 'Professional Experience',
-    location: 'Multan, Pakistan / Remote',
+    location: 'Multan, PK / Remote',
     points: [
-      'Managed freight tracking and driver dispatch communication schedules.',
-      'Provided direct customer support and resolved operational logistics issues.',
+      'Coordinated real-time driver logistics schedules, freight routing, and urgent status updates.',
+      'Delivered direct client communications and rapid operational problem resolution under strict timeframes.',
     ],
   },
 ];
@@ -46,28 +46,40 @@ export default function Experience() {
     : experiences.filter((item) => item.category === activeTab);
 
   return (
-    <section id="experience" className="py-6 sm:py-12 bg-dark-800/40 relative w-full">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-20 sm:py-28 border-b-2 border-white bg-black text-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
-          <span className="text-primary font-semibold text-xs uppercase tracking-wider">Career</span>
-          <h2 className="text-2xl sm:text-4xl font-bold text-white mt-1">Experience & Background</h2>
+        <div className="flex items-center justify-between border-b-2 border-white pb-3 mb-12 text-xs font-black uppercase tracking-widest text-white">
+          <span>04. Experience Log</span>
+          <span className="hidden sm:inline">2020 — 2026</span>
+        </div>
+
+        {/* Section Title & Filter Tabs */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-white max-w-2xl">
+              Career Record &amp;<br />Experience.
+            </h2>
+            <p className="text-sm sm:text-base font-light text-neutral-400 mt-4 leading-relaxed">
+              Professional background combining frontend engineering craft with disciplined operational accuracy.
+            </p>
+          </div>
 
           {/* Filter Tabs */}
-          <div className="inline-flex p-1 rounded-xl bg-dark-700 border border-slate-700 mt-4 gap-1">
+          <div className="flex flex-wrap gap-2 self-start md:self-auto">
             {[
-              { label: 'All', value: 'all' },
-              { label: 'Web Dev', value: 'dev' },
+              { label: 'All Roles', value: 'all' },
+              { label: 'Development', value: 'dev' },
               { label: 'Operations & Data', value: 'ops' },
             ].map((tab) => (
               <button
                 key={tab.value}
                 onClick={() => setActiveTab(tab.value)}
-                className={`px-3 py-1 text-xs rounded-lg transition cursor-pointer ${
+                className={`px-4 py-2 text-xs font-black uppercase tracking-wider border-2 border-white ${
                   activeTab === tab.value
-                    ? 'bg-primary text-dark-900 font-bold'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-black'
+                    : 'bg-black text-white hover:bg-white hover:text-black'
                 }`}
               >
                 {tab.label}
@@ -76,25 +88,31 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Timeline */}
-        <div className="relative border-l-2 border-slate-800 ml-3 sm:ml-6 space-y-4 sm:space-y-6">
+        {/* Chronological List */}
+        <div className="space-y-6">
           {filtered.map((exp, idx) => (
-            <div key={idx} className="relative pl-4 sm:pl-8">
-              <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-primary border-4 border-dark-900" />
-              <div className="glass-card p-4 sm:p-6 rounded-2xl border border-slate-800 shadow-lg">
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                  <h3 className="text-sm sm:text-lg font-bold text-white">{exp.role}</h3>
-                  <span className="text-[11px] sm:text-xs font-mono text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
-                    {exp.period}
-                  </span>
+            <div
+              key={idx}
+              className="border-2 border-white bg-black"
+            >
+              {/* Inverted Card Top */}
+              <div className="bg-white text-black p-3.5 text-xs font-black uppercase flex flex-wrap items-center justify-between gap-2">
+                <span>Role: {exp.role}</span>
+                <span>{exp.period}</span>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 sm:p-8 space-y-4">
+                <div className="text-xs text-neutral-400 uppercase border-b border-neutral-800 pb-3 flex flex-wrap gap-2 font-bold">
+                  <span className="text-white">{exp.company}</span>
+                  <span className="text-neutral-600">•</span>
+                  <span>{exp.location}</span>
                 </div>
-                <div className="text-xs text-slate-400 mb-2.5">
-                  <span>{exp.company}</span> • <span>{exp.location}</span>
-                </div>
-                <ul className="space-y-1">
+
+                <ul className="space-y-2.5 pt-2">
                   {exp.points.map((p, pIdx) => (
-                    <li key={pIdx} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2">
-                      <span className="text-primary mt-0.5">▸</span>
+                    <li key={pIdx} className="text-xs sm:text-sm font-light text-neutral-300 leading-relaxed flex items-start gap-2.5">
+                      <span className="text-white select-none mt-0.5">—</span>
                       <span>{p}</span>
                     </li>
                   ))}

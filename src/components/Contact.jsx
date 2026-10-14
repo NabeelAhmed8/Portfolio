@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const emailAddress = 'contact@nabeeldhillon.dev';
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(emailAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,102 +29,195 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-6 sm:py-12 relative w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 sm:py-28 border-b-2 border-white bg-black text-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
-          <span className="text-primary font-semibold text-xs uppercase tracking-wider">Contact</span>
-          <h2 className="text-2xl sm:text-4xl font-bold text-white mt-1">Get In Touch</h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1">Open for freelance projects and developer roles.</p>
+        <div className="flex items-center justify-between border-b-2 border-white pb-3 mb-12 text-xs font-black uppercase tracking-widest text-white">
+          <span>05. Contact &amp; Dispatch</span>
+          <span className="hidden sm:inline">Direct Inbox</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-start max-w-4xl mx-auto">
+        {/* Section Title */}
+        <div className="mb-14">
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-white max-w-4xl">
+            Dispatch a Brief.<br />
+            Start a Project.
+          </h2>
+          <p className="text-sm sm:text-base font-light text-neutral-400 mt-4 max-w-2xl leading-relaxed">
+            Accepting select commissions, frontend contract engineering, and full-time engineering roles worldwide.
+          </p>
+        </div>
+
+        {/* Two-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           
-          {/* Info Side */}
-          <div className="lg:col-span-5 space-y-3">
-            <div className="glass-card p-3 sm:p-4 rounded-xl border border-slate-800 shadow-md">
-              <div className="text-[11px] text-slate-400 uppercase font-mono">Email</div>
-              <a href="mailto:nabeelahmed679@hotmail.com" className="text-xs sm:text-sm font-semibold text-white hover:text-primary transition truncate block">
-                nabeelahmed679@hotmail.com
-              </a>
+          {/* Info Column */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Direct Channel Box */}
+            <div className="border-2 border-white bg-black">
+              <div className="bg-white text-black p-3.5 text-xs font-black uppercase flex justify-between">
+                <span>Direct Channel</span>
+                <span>Monitored Daily</span>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="text-lg font-black text-white break-all">
+                  {emailAddress}
+                </div>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="px-4 py-2 bg-white text-black font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white"
+                  >
+                    {copied ? 'Copied to Clipboard ✓' : 'Copy Email Address'}
+                  </button>
+                  <a
+                    href={`mailto:${emailAddress}`}
+                    className="px-4 py-2 bg-black text-white font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black"
+                  >
+                    Open Mail Client ↗
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div className="glass-card p-3 sm:p-4 rounded-xl border border-slate-800 shadow-md">
-              <div className="text-[11px] text-slate-400 uppercase font-mono">Location</div>
-              <p className="text-xs sm:text-sm font-semibold text-white">Pakistan</p>
+            {/* Coordinates & Response Telemetry */}
+            <div className="border-2 border-white p-5 text-xs space-y-3 bg-black">
+              <div className="text-neutral-500 font-bold uppercase tracking-wider">
+                Availability Parameters
+              </div>
+              <div className="flex justify-between border-b border-neutral-800 pb-2">
+                <span className="text-neutral-400">Base Location:</span>
+                <span className="font-bold text-white">Multan, Punjab, PK (UTC+5)</span>
+              </div>
+              <div className="flex justify-between border-b border-neutral-800 pb-2">
+                <span className="text-neutral-400">Response Window:</span>
+                <span className="font-bold text-white">Within 24 Hours</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-neutral-400">Status:</span>
+                <span className="bg-white text-black font-black px-2 py-0.5 uppercase">Available</span>
+              </div>
             </div>
 
-            <div className="glass-card p-3 sm:p-4 rounded-xl border border-slate-800 shadow-md">
-              <div className="text-[11px] text-slate-400 uppercase font-mono">Instagram</div>
-              <a href="https://instagram.com/_https.nabeel" target="_blank" rel="noreferrer" className="text-xs sm:text-sm font-semibold text-white hover:text-primary transition">
-                @_https.nabeel
-              </a>
+            {/* External Links */}
+            <div className="border-2 border-white p-5 text-xs space-y-3 bg-black">
+              <div className="text-neutral-500 font-bold uppercase tracking-wider">
+                Public Profiles
+              </div>
+              <div className="flex flex-col gap-2 pt-1 font-bold">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black"
+                >
+                  <span>GitHub Archive</span>
+                  <span>↗</span>
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black"
+                >
+                  <span>LinkedIn Network</span>
+                  <span>↗</span>
+                </a>
+                <a
+                  href="https://instagram.com/_https.nabeel"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black"
+                >
+                  <span>Instagram Feed</span>
+                  <span>↗</span>
+                </a>
+              </div>
             </div>
+
           </div>
 
-          {/* Form */}
+          {/* Form Column */}
           <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="glass-card p-4 sm:p-6 rounded-2xl space-y-3 border border-slate-800 shadow-lg">
-              
-              <div>
-                <label htmlFor="name" className="block text-[11px] uppercase font-mono text-slate-300 mb-1">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  required
-                  className="w-full px-3 py-2 rounded-lg bg-dark-700/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-primary text-xs sm:text-sm transition"
-                />
+            <form
+              onSubmit={handleSubmit}
+              className="border-2 border-white bg-black"
+            >
+              <div className="bg-white text-black p-3.5 text-xs font-black uppercase flex justify-between">
+                <span>Send a Message</span>
+                <span>Inquiry Form</span>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-[11px] uppercase font-mono text-slate-300 mb-1">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="your.email@example.com"
-                  required
-                  className="w-full px-3 py-2 rounded-lg bg-dark-700/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-primary text-xs sm:text-sm transition"
-                />
+              <div className="p-6 sm:p-8 space-y-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-xs font-black uppercase tracking-wider text-white mb-2"
+                  >
+                    01. Your Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name..."
+                    required
+                    className="w-full p-3.5 bg-black text-white text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none focus:placeholder-neutral-400"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-xs font-black uppercase tracking-wider text-white mb-2"
+                  >
+                    02. Your Email Address
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email address..."
+                    required
+                    className="w-full p-3.5 bg-black text-white text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none focus:placeholder-neutral-400"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-xs font-black uppercase tracking-wider text-white mb-2"
+                  >
+                    03. Message &amp; Project Details
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="State your project goals, timeline, or contract requirements..."
+                    required
+                    className="w-full p-3.5 bg-black text-white text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none focus:placeholder-neutral-400 resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-4 bg-white text-black font-black text-sm uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white"
+                >
+                  {sent ? 'Message Sent Successfully ✓' : 'Send Message →'}
+                </button>
               </div>
-
-              <div>
-                <label htmlFor="message" className="block text-[11px] uppercase font-mono text-slate-300 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={3}
-                  autoComplete="off"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="How can I help you?"
-                  required
-                  className="w-full px-3 py-2 rounded-lg bg-dark-700/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-primary text-xs sm:text-sm transition resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-2.5 rounded-lg bg-primary text-dark-900 font-bold hover:bg-primary/90 transition text-xs sm:text-sm shadow-md shadow-primary/20 cursor-pointer"
-              >
-                {sent ? 'Message Sent Successfully ✓' : 'Send Message'}
-              </button>
-
             </form>
           </div>
 

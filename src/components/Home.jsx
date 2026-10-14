@@ -1,69 +1,90 @@
-import React from 'react';
-
 export default function Home() {
   return (
-    <section id="home" className="relative w-full h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
-      {/* Glow Effects */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-48 sm:w-96 h-48 sm:h-96 glow-cyan rounded-full pointer-events-none -z-10 opacity-30 sm:opacity-70" />
-      <div className="absolute bottom-10 right-1/4 w-40 sm:w-80 h-40 sm:h-80 glow-indigo rounded-full pointer-events-none -z-10 opacity-30 sm:opacity-70" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center w-full my-auto">
+    <section id="home" className="pt-28 sm:pt-36 pb-16 sm:pb-24 border-b-2 border-white bg-black text-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
-        {/* Availability Badge */}
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[11px] sm:text-xs font-medium mb-3 sm:mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-          <span>Available for New Projects</span>
+        {/* Status Bar */}
+        <div className="inline-flex items-center gap-3 border-2 border-white bg-black px-4 py-1.5 mb-8 text-xs font-bold uppercase tracking-wider text-white">
+          <span className="inline-block w-2.5 h-2.5 bg-white animate-pulse" />
+          <span>Status: Available for New Work and Contracts</span>
         </div>
 
-        {/* Title */}
-        <h1 className="text-xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-3 sm:mb-5 leading-tight">
-          Hi, I’m <span className="bg-gradient-to-r from-sky-400 to-white bg-clip-text text-transparent">Nabeel Ahmed Dhillon</span>
-          <br />
-          <span className="text-slate-300 text-base sm:text-3xl lg:text-5xl font-bold mt-2 block">
-            Frontend Web Developer
-          </span>
-        </h1>
+        {/* Monumental Brutalist Display Title */}
+        <div className="space-y-3 mb-8">
+          <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.85] text-white select-none">
+            Frontend<br />
+            Engineer.
+          </h1>
+          <div className="text-lg sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white pt-2 border-l-4 border-white pl-4">
+            Nabeel Ahmed Dhillon
+          </div>
+        </div>
 
-        {/* Description */}
-        <p className="max-w-lg mx-auto text-xs sm:text-base text-slate-400 mb-5 sm:mb-7 leading-relaxed px-2">
-          Crafting clean, responsive web interfaces, modern landing pages, and interactive digital user experiences with React and Tailwind CSS.
+        {/* Thin Clean Statement */}
+        <p className="max-w-3xl text-base sm:text-lg font-light text-neutral-300 leading-relaxed mb-10 tracking-normal">
+          Raw code. Uncompromising fidelity. Zero bloat. Building relentless, high-contrast digital interfaces with modern React, Tailwind CSS, and meticulous structural precision.
         </p>
 
-        {/* Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-5 sm:mb-8">
+        {/* High-Contrast Action Buttons */}
+        <div className="flex flex-wrap items-center gap-4 mb-14">
           <a
             href="#projects"
-            className="flex items-center gap-1.5 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-primary text-dark-900 font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-105 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
+            className="px-6 py-3.5 bg-white text-black font-black text-xs sm:text-sm uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white"
           >
-            <span>View Projects</span>
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            View Projects ↓
           </a>
           <a
             href="#contact"
-            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl glass-card text-white font-medium hover:border-slate-500 hover:scale-105 transition-all duration-200 text-xs sm:text-sm cursor-pointer"
+            className="px-6 py-3.5 bg-black text-white font-black text-xs sm:text-sm uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black"
           >
-            Contact Me
+            Get in Touch →
           </a>
         </div>
 
-        {/* Social Links */}
-        <div className="flex items-center justify-center gap-3 sm:gap-4 text-slate-400">
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="p-2 rounded-lg glass-card hover:text-primary transition">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-            </svg>
+        {/* Structural Telemetry Strip */}
+        <div className="grid grid-cols-2 md:grid-cols-4 border-2 border-white text-xs uppercase divide-y-2 md:divide-y-0 md:divide-x-2 divide-white bg-black">
+          <div className="p-4 bg-black">
+            <span className="text-neutral-500 block mb-1 font-bold">01. Specialty</span>
+            <span className="font-black text-white">React &amp; Tailwind UI</span>
+          </div>
+          <div className="p-4 bg-black">
+            <span className="text-neutral-500 block mb-1 font-bold">02. Base</span>
+            <span className="font-black text-white">Multan, Pakistan</span>
+          </div>
+          <div className="p-4 bg-black">
+            <span className="text-neutral-500 block mb-1 font-bold">03. Background</span>
+            <span className="font-black text-white">4+ Years Operations</span>
+          </div>
+          <div className="p-4 bg-black">
+            <span className="text-neutral-500 block mb-1 font-bold">04. Dispatch</span>
+            <span className="font-black text-white">Remote Worldwide</span>
+          </div>
+        </div>
+
+        {/* Quick Direct Links */}
+        <div className="pt-6 flex flex-wrap items-center gap-4 text-xs font-bold uppercase">
+          <span className="text-neutral-500">Channels:</span>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:bg-white hover:text-black px-2 py-0.5 border border-white text-white"
+          >
+            GitHub ↗
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 rounded-lg glass-card hover:text-primary transition">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:bg-white hover:text-black px-2 py-0.5 border border-white text-white"
+          >
+            LinkedIn ↗
           </a>
-          <a href="https://instagram.com/_https.nabeel" target="_blank" rel="noreferrer" className="p-2 rounded-lg glass-card hover:text-primary transition">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
+          <a
+            href="mailto:contact@nabeeldhillon.dev"
+            className="hover:bg-white hover:text-black px-2 py-0.5 border border-white text-white"
+          >
+            contact@nabeeldhillon.dev ↗
           </a>
         </div>
 
