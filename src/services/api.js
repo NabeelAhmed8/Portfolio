@@ -2,7 +2,7 @@ import { defaultProjects } from '../data/projectsData';
 import { defaultSkills } from '../data/skillsData';
 import { defaultExperiences } from '../data/experienceData';
 
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-theta-nine-1a23fnuywk.vercel.app/api';
 
 /**
  * Health Check API
