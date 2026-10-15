@@ -2,20 +2,28 @@ import { defaultProjects } from '../data/projectsData';
 import { defaultSkills } from '../data/skillsData';
 import { defaultExperiences } from '../data/experienceData';
 
+const BASE_URL = 'https://backend-theta-nine-1a23fnuywk.vercel.app/api';
+
 /**
  * Health Check API
  */
 export async function getHealth() {
-  return {
-    status: 'OPERATIONAL',
-    mode: 'STANDALONE_DIRECT_DISPATCH',
-    timestamp: new Date().toISOString(),
-    service: 'Nabeel Ahmed Dhillon — Portfolio (Direct Client Mode)',
-  };
+  try {
+    const res = await fetch(`${BASE_URL}/health`);
+    if (!res.ok) throw new Error(`Status ${res.status}`);
+    return await res.json();
+  } catch {
+    return {
+      status: 'OPERATIONAL',
+      mode: 'DIRECT_EMAIL_DISPATCH',
+      timestamp: new Date().toISOString(),
+      service: 'Nabeel Ahmed Dhillon — Portfolio',
+    };
+  }
 }
 
 /**
- * Projects API (Direct Client Data Delivery)
+ * Projects API (Instant Client Data Delivery)
  */
 export async function getProjects(params = {}) {
   let list = [...defaultProjects];
@@ -57,29 +65,21 @@ export async function getExperience(category = 'all') {
 }
 
 /**
- * Contact Submission API — 100% Serverless Direct Email
- * Delivers directly to nabeelprojects@hotmail.com without any Vercel or backend server!
+ * Contact Submission API — Custom Jet Black Brutalist Email Dispatch
+ * Dispatches directly to custom backend which sends custom Jet Black email to Nabeel!
  */
 export async function sendContact(contactData) {
-  const res = await fetch('https://formsubmit.co/ajax/nabeelprojects@hotmail.com', {
+  const res = await fetch(`${BASE_URL}/contact`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
     },
-    body: JSON.stringify({
-      name: contactData.name,
-      email: contactData.email,
-      message: contactData.message,
-      _subject: `New Portfolio Inquiry from ${contactData.name}`,
-      _template: 'box',
-      _captcha: 'false',
-    }),
+    body: JSON.stringify(contactData),
   });
 
   const json = await res.json();
-  if (!res.ok && json.success === 'false') {
-    throw new Error(json.message || 'Submission failed');
+  if (!res.ok) {
+    throw new Error(json.error || 'Submission failed');
   }
-  return { success: true, message: json.message || 'Inquiry Dispatched Successfully!' };
+  return json;
 }
