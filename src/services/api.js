@@ -2,157 +2,84 @@ import { defaultProjects } from '../data/projectsData';
 import { defaultSkills } from '../data/skillsData';
 import { defaultExperiences } from '../data/experienceData';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-theta-nine-1a23fnuywk.vercel.app/api';
-
 /**
  * Health Check API
- * Endpoint: GET /api/health
  */
 export async function getHealth() {
-  try {
-    const res = await fetch(`${BASE_URL}/health`);
-    if (!res.ok) throw new Error(`Status ${res.status}`);
-    return await res.json();
-  } catch (err) {
-    return {
-      status: 'OFFLINE_FALLBACK',
-      uptime: null,
-      timestamp: new Date().toISOString(),
-      service: 'Nabeel Ahmed Dhillon — Portfolio (Client Mode)',
-      error: err.message,
-    };
-  }
+  return {
+    status: 'OPERATIONAL',
+    mode: 'STANDALONE_DIRECT_DISPATCH',
+    timestamp: new Date().toISOString(),
+    service: 'Nabeel Ahmed Dhillon — Portfolio (Direct Client Mode)',
+  };
 }
 
 /**
- * Projects API
- * Endpoint: GET /api/projects (with optional ?category=&featured=)
+ * Projects API (Direct Client Data Delivery)
  */
 export async function getProjects(params = {}) {
-  try {
-    const query = new URLSearchParams();
-    if (params.category) query.append('category', params.category);
-    if (params.featured !== undefined) query.append('featured', String(params.featured));
-
-    const url = `${BASE_URL}/projects${query.toString() ? `?${query.toString()}` : ''}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return { success: true, data: data.data || [] };
-  } catch {
-    // Fallback to static data
-    let fallback = [...defaultProjects];
-    if (params.category) {
-      fallback = fallback.filter(
-        (p) => p.category.toLowerCase() === params.category.toLowerCase()
-      );
-    }
-    if (params.featured !== undefined) {
-      fallback = fallback.filter((p) => Boolean(p.featured) === Boolean(params.featured));
-    }
-    return { success: false, data: fallback, fallback: true };
+  let list = [...defaultProjects];
+  if (params.category) {
+    list = list.filter(
+      (p) => p.category.toLowerCase() === params.category.toLowerCase()
+    );
   }
+  if (params.featured !== undefined) {
+    list = list.filter((p) => Boolean(p.featured) === Boolean(params.featured));
+  }
+  return { success: true, data: list };
 }
 
 /**
  * Project Details by ID
- * Endpoint: GET /api/projects/:id
  */
 export async function getProjectById(id) {
-  try {
-    const res = await fetch(`${BASE_URL}/projects/${id}`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return { success: true, data: data.data };
-  } catch {
-    const fallback = defaultProjects.find((p) => p.id === id);
-    return { success: false, data: fallback || null, fallback: true };
-  }
-}
-
-/**
- * Create Project
- * Endpoint: POST /api/projects
- */
-export async function createProject(projectData) {
-  const res = await fetch(`${BASE_URL}/projects`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(projectData),
-  });
-
-  const json = await res.json();
-  if (!res.ok) {
-    throw new Error(json.error || 'Failed to create project');
-  }
-  return json;
+  const project = defaultProjects.find((p) => p.id === id);
+  return { success: Boolean(project), data: project || null };
 }
 
 /**
  * Skills API
- * Endpoint: GET /api/skills
  */
 export async function getSkills() {
-  try {
-    const res = await fetch(`${BASE_URL}/skills`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return { success: true, data: data.data || [] };
-  } catch {
-    return { success: false, data: defaultSkills, fallback: true };
-  }
+  return { success: true, data: defaultSkills };
 }
 
 /**
  * Experience API
- * Endpoint: GET /api/experience (with optional ?category=)
  */
 export async function getExperience(category = 'all') {
-  try {
-    const query = category && category !== 'all' ? `?category=${category}` : '';
-    const res = await fetch(`${BASE_URL}/experience${query}`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return { success: true, data: data.data || [] };
-  } catch {
-    let fallback = defaultExperiences;
-    if (category && category !== 'all') {
-      fallback = fallback.filter((exp) => exp.category === category);
-    }
-    return { success: false, data: fallback, fallback: true };
+  let list = defaultExperiences;
+  if (category && category !== 'all') {
+    list = list.filter((exp) => exp.category === category);
   }
+  return { success: true, data: list };
 }
 
 /**
- * Contact Submission API
- * Endpoint: POST /api/contact
+ * Contact Submission API — 100% Serverless Direct Email
+ * Delivers directly to nabeelprojects@hotmail.com without any Vercel or backend server!
  */
 export async function sendContact(contactData) {
-  const res = await fetch(`${BASE_URL}/contact`, {
+  const res = await fetch('https://formsubmit.co/ajax/nabeelprojects@hotmail.com', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(contactData),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      name: contactData.name,
+      email: contactData.email,
+      message: contactData.message,
+      _subject: `New Portfolio Inquiry from ${contactData.name}`,
+      _template: 'box',
+      _captcha: 'false',
+    }),
   });
 
   const json = await res.json();
-  if (!res.ok) {
-    throw new Error(json.error || 'Submission failed');
+  if (!res.ok && json.success === 'false') {
+    throw new Error(json.message || 'Submission failed');
   }
-  return json;
+  return { success: true, message: json.message || 'Inquiry Dispatched Successfully!' };
 }
-
-/**
- * Messages Log API
- * Endpoint: GET /api/contact/messages
- */
-export async function getMessages() {
-  try {
-    const res = await fetch(`${BASE_URL}/contact/messages`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return { success: true, data: data.data || [], count: data.count || 0 };
-  } catch (err) {
-    return { success: false, data: [], count: 0, error: err.message };
-  }
-}
-
