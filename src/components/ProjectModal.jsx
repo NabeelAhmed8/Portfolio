@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import ProjectCarousel from './ProjectCarousel';
 
 const isValidUrl = (url) =>
   typeof url === 'string' &&
@@ -64,9 +63,6 @@ export default function ProjectModal({ project, onClose }) {
               {project.title}
             </h2>
           </div>
-
-          {/* Screenshot Carousel in Modal */}
-          <ProjectCarousel images={project.images} title={project.title} />
 
           <div className="border-t border-b border-neutral-800 py-4">
             <h3 className="text-xs font-black uppercase tracking-wider text-neutral-400 mb-2">
