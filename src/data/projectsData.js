@@ -7,8 +7,8 @@ export const defaultProjects = [
       'High-fashion digital flagship and e-commerce experience engineered for an independent luxury atelier. Features bespoke editorial lookbooks, a dynamic garment configurator, fluid interaction loops, seamless cart state management, and high-contrast typography reflecting minimalist couture aesthetics.',
     stack: ['React 19', 'Tailwind CSS', 'Vite', 'State Architecture', 'High-Contrast UI'],
     images: [
-      `${import.meta.env.BASE_URL}projects/aura-1.svg`,
-      `${import.meta.env.BASE_URL}projects/aura-2.svg`,
+      `${import.meta.env.BASE_URL}projects/aura-1.png`,
+      `${import.meta.env.BASE_URL}projects/aura-2.png`,
     ],
     liveUrl: null,
     githubUrl: null,
