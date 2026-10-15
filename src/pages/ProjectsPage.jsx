@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getProjects } from '../services/api';
 import ProjectModal from '../components/ProjectModal';
+import ProjectCarousel from '../components/ProjectCarousel';
 
 const isValidUrl = (url) =>
   typeof url === 'string' &&
@@ -91,6 +92,9 @@ export default function ProjectsPage() {
 
                 {/* Card Content */}
                 <div className="p-6 sm:p-8 space-y-6">
+                  {/* Screenshot Carousel */}
+                  <ProjectCarousel images={proj.images} title={proj.title} />
+
                   <div>
                     <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white">
                       {proj.title}
