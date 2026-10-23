@@ -1,131 +1,168 @@
+import { Sparkles, CheckCircle2, MapPin, Clock, Award, Terminal } from 'lucide-react';
+
 export default function AboutPage() {
+  const principles = [
+    {
+      title: 'Clean, Semantic Architecture',
+      desc: 'Writing structured HTML5, maintainable CSS, and idiomatic React components with clear separation of concerns.',
+    },
+    {
+      title: 'Performance & Zero Jank',
+      desc: 'Ensuring fast load times, minimal bundle footprint, zero layout shifts (CLS), and fluid 60fps user interactions.',
+    },
+    {
+      title: 'Predictable State & APIs',
+      desc: 'Architecting robust state management and well-structured RESTful APIs with PHP, Laravel, and Express.',
+    },
+    {
+      title: 'Refined Minimalist Aesthetics',
+      desc: 'Emphasizing high readability, thoughtful whitespace, modern typography, and intuitive accessibility.',
+    },
+  ];
+
+  const metrics = [
+    { number: '01+', label: 'Years Experience', sub: 'Full stack web development' },
+    { number: '10+', label: 'Core Technologies', sub: 'React, Laravel, Node, DBs' },
+    { number: '100%', label: 'Responsive Layouts', sub: 'Mobile-first fluid design' },
+    { number: '<24h', label: 'Response Window', sub: 'Prompt direct communication' },
+  ];
+
   return (
-    <div className="pt-24 sm:pt-32 pb-20 sm:pb-28 bg-black text-white min-h-[calc(100vh-14rem)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-28">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+
         {/* Section Header */}
-        <div className="flex items-center justify-between border-b-2 border-white pb-3 mb-12 text-xs font-black uppercase tracking-widest text-white">
-          <span>01. Profile and Philosophy</span>
-          <span className="hidden sm:inline">Page: about</span>
+        <div className="flex items-center justify-between pb-3 mb-10 border-b border-white/[0.08]">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
+            <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
+            <span>01 / Profile &amp; Background</span>
+          </div>
+          <span className="text-xs text-zinc-500 font-mono">about</span>
         </div>
 
-        {/* Section Title */}
+        {/* Headline */}
         <div className="mb-14">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-white max-w-4xl">
-            Strip away the non-essential.<br />
-            Let the raw interface speak.
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-100 max-w-3xl leading-[1.12]">
+            Engineering thoughtful digital products with modern simplicity.
           </h1>
+          <p className="mt-4 text-base sm:text-lg text-zinc-400 max-w-2xl font-normal leading-relaxed">
+            I craft end-to-end web applications with a focus on clean engineering, responsive layouts, and user-centric design.
+          </p>
         </div>
 
-        {/* Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
-          {/* Manifesto & Narrative */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="border-l-4 border-white pl-4 py-1 text-white font-bold text-sm uppercase tracking-wide">
-              Engineering Ethos
+        {/* Two-Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+          {/* Main Narrative & Philosophy */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="p-6 sm:p-7 rounded-2xl border border-white/[0.07] bg-zinc-900/30 space-y-4">
+              <h2 className="text-lg font-semibold text-zinc-100 flex items-center gap-2">
+                <Terminal className="w-4 h-4 text-zinc-400" />
+                <span>Development Philosophy</span>
+              </h2>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                I believe that good software should be fast, intuitive, and quiet. By removing unnecessary visual noise and bloated dependencies, interfaces become clearer and far more enjoyable to use.
+              </p>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                My work spans both frontend engineering with modern React, Vite, and Tailwind CSS, as well as full-stack architectures utilizing PHP, Laravel, MySQL, and MongoDB.
+              </p>
             </div>
 
-            <p className="font-light text-neutral-300 text-sm sm:text-base leading-relaxed">
-              I build digital experiences stripped of superfluous decoration. No gauzy glows, no redundant dependencies, and no unnecessary layout shift. Just razor-sharp accessible HTML, modular React components, and disciplined Tailwind CSS architecture.
-            </p>
-
-            <p className="font-light text-neutral-300 text-sm sm:text-base leading-relaxed">
-              My professional background centers on full-stack web engineering, crafting end-to-end applications with modern frontend frameworks and robust backend architectures with MongoDB, MySQL, PHP, and Laravel.
-            </p>
-
-            <div className="border-2 border-white p-5 bg-black space-y-3 mt-6">
-              <div className="text-xs font-black uppercase text-white tracking-widest mb-3">
+            {/* Principles */}
+            <div className="space-y-3">
+              <h3 className="text-xs font-mono uppercase tracking-widest text-zinc-500 px-1">
                 Core Principles
-              </div>
-              <div className="flex items-start gap-3 text-xs font-bold text-white">
-                <span className="bg-white text-black px-1.5 py-0.5 font-mono">01</span>
-                <span>Semantic, accessible HTML5 and clean DOM structure</span>
-              </div>
-              <div className="flex items-start gap-3 text-xs font-bold text-white">
-                <span className="bg-white text-black px-1.5 py-0.5 font-mono">02</span>
-                <span>Zero jank, zero cumulative layout shift (CLS)</span>
-              </div>
-              <div className="flex items-start gap-3 text-xs font-bold text-white">
-                <span className="bg-white text-black px-1.5 py-0.5 font-mono">03</span>
-                <span>Reusable, predictable component architecture and state hooks</span>
-              </div>
-              <div className="flex items-start gap-3 text-xs font-bold text-white">
-                <span className="bg-white text-black px-1.5 py-0.5 font-mono">04</span>
-                <span>High-contrast, readability-first interface hierarchy</span>
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {principles.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-xl border border-white/[0.06] bg-zinc-900/20 hover:border-white/[0.12] transition-colors"
+                  >
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-zinc-400 mt-0.5 shrink-0" />
+                      <div>
+                        <h4 className="text-sm font-semibold text-zinc-200">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Metrics & Dossier Box */}
+          {/* Dossier & Scorecard */}
           <div className="lg:col-span-5 space-y-6">
-            
-            {/* Scorecard */}
-            <div className="border-2 border-white bg-black">
-              <div className="border-b-2 border-white p-3.5 text-xs font-black uppercase bg-white text-black flex justify-between">
-                <span>Engineering Metrics</span>
-                <span>Active Profile</span>
+
+            {/* Minimalist Metrics Grid */}
+            <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30">
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-5">
+                <span className="text-xs font-mono uppercase tracking-wider text-zinc-400">
+                  Key Metrics
+                </span>
+                <Award className="w-4 h-4 text-zinc-500" />
               </div>
 
-              <div className="grid grid-cols-2 divide-x-2 divide-y-2 divide-white">
-                <div className="p-4">
-                  <div className="text-4xl sm:text-5xl font-black text-white leading-none">
-                    01+
+              <div className="grid grid-cols-2 gap-4">
+                {metrics.map((m, idx) => (
+                  <div key={idx} className="p-3.5 rounded-xl bg-zinc-900/50 border border-white/[0.04]">
+                    <div className="text-2xl sm:text-3xl font-bold text-zinc-100">
+                      {m.number}
+                    </div>
+                    <div className="text-xs font-medium text-zinc-300 mt-1">
+                      {m.label}
+                    </div>
+                    <div className="text-[11px] text-zinc-500 mt-0.5">
+                      {m.sub}
+                    </div>
                   </div>
-                  <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
-                    Years Full Stack
-                  </div>
-                </div>
-
-                <div className="p-4">
-                  <div className="text-4xl sm:text-5xl font-black text-white leading-none">
-                    10+
-                  </div>
-                  <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
-                    Core Technologies
-                  </div>
-                </div>
-
-                <div className="p-4">
-                  <div className="text-4xl sm:text-5xl font-black text-white leading-none">
-                    100%
-                  </div>
-                  <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
-                    Responsive Layout
-                  </div>
-                </div>
-
-                <div className="p-4">
-                  <div className="text-4xl sm:text-5xl font-black text-white leading-none">
-                    24h
-                  </div>
-                  <div className="text-[11px] font-bold text-neutral-400 mt-2 uppercase">
-                    Target Reply Window
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Dossier Details */}
-            <div className="border-2 border-white p-5 bg-black text-xs space-y-2.5">
-              <div className="text-neutral-500 font-bold uppercase tracking-wider">
-                Operator Details
+            {/* Quick Details Card */}
+            <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 space-y-3.5 text-xs">
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/[0.06]">
+                Developer Details
               </div>
-              <div className="flex justify-between border-b border-neutral-800 pb-1.5">
-                <span className="text-neutral-400">Name:</span>
-                <span className="font-bold text-white">Nabeel Ahmed Dhillon</span>
+
+              <div className="flex justify-between items-center py-1">
+                <span className="text-zinc-500">Name</span>
+                <span className="text-zinc-200 font-medium">Nabeel Ahmed Dhillon</span>
               </div>
-              <div className="flex justify-between border-b border-neutral-800 pb-1.5">
-                <span className="text-neutral-400">Location:</span>
-                <span className="font-bold text-white">Multan, Punjab, PK</span>
+
+              <div className="flex justify-between items-center py-1">
+                <span className="text-zinc-500 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Location</span>
+                </span>
+                <span className="text-zinc-200 font-medium">Multan, Pakistan</span>
               </div>
-              <div className="flex justify-between border-b border-neutral-800 pb-1.5">
-                <span className="text-neutral-400">Engagement:</span>
-                <span className="font-bold text-white">Full-Stack, React, Laravel, Node</span>
+
+              <div className="flex justify-between items-center py-1">
+                <span className="text-zinc-500 flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>Timezone</span>
+                </span>
+                <span className="text-zinc-200 font-medium">PKT (UTC+5)</span>
               </div>
-              <div className="flex justify-between pt-1">
-                <span className="text-neutral-400">Status:</span>
-                <span className="bg-white text-black font-black px-2 py-0.5 uppercase">Available</span>
+
+              <div className="flex justify-between items-center py-1">
+                <span className="text-zinc-500">Stack Focus</span>
+                <span className="text-zinc-200 font-medium">Full Stack (MERN / LAMP)</span>
+              </div>
+
+              <div className="flex justify-between items-center pt-2 border-t border-white/[0.06]">
+                <span className="text-zinc-500">Current Status</span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Available for Hire
+                </span>
               </div>
             </div>
 
@@ -137,4 +174,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

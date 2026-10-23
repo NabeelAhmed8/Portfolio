@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createProject } from '../services/api';
+import { X, Plus, Sparkles } from 'lucide-react';
 
 export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
   const [formData, setFormData] = useState({
@@ -66,38 +67,42 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-xs">
-      <div className="w-full max-w-2xl bg-black border-4 border-white shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
-        
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-6 backdrop-blur-md animate-fade-in">
+      <div className="w-full max-w-2xl bg-[#0d0d10] border border-white/[0.12] rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
+
         {/* Header */}
-        <div className="bg-white text-black p-4 flex items-center justify-between font-black uppercase text-xs sm:text-sm tracking-wider">
+        <div className="p-5 sm:p-6 border-b border-white/[0.08] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span>03. Add Project Record (POST /api/projects)</span>
+            <Sparkles className="w-4 h-4 text-zinc-400" />
+            <h2 className="text-sm font-semibold text-zinc-100">
+              Add Project Record
+            </h2>
           </div>
           <button
             onClick={onClose}
-            className="border-2 border-black px-3 py-1 font-black hover:bg-black hover:text-white transition-colors cursor-pointer"
+            aria-label="Close modal"
+            className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
           >
-            Close [ESC]
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="overflow-y-auto p-6 space-y-5">
+        <form onSubmit={handleSubmit} className="overflow-y-auto p-6 space-y-4">
           {status.error && (
-            <div className="p-3 border-2 border-white bg-red-950/40 text-white text-xs font-bold uppercase">
-              Notice: {status.error}
+            <div className="p-3.5 rounded-xl border border-red-500/20 bg-red-500/10 text-red-300 text-xs leading-relaxed">
+              {status.error}
             </div>
           )}
 
           {status.success && (
-            <div className="p-3 border-2 border-white bg-green-950/40 text-white text-xs font-bold uppercase">
-              Project registered successfully in backend store! ✓
+            <div className="p-3.5 rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-300 text-xs leading-relaxed">
+              Project record saved successfully!
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider mb-1.5 text-white">
+            <label className="block text-xs font-medium text-zinc-300 mb-1.5">
               Project Title *
             </label>
             <input
@@ -105,15 +110,15 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              placeholder="e.g. Omnichannel Supply Chain Portal"
+              placeholder="e.g. Modern Web Platform"
               required
-              className="w-full p-3 bg-black text-white text-xs sm:text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider mb-1.5 text-white">
+              <label className="block text-xs font-medium text-zinc-300 mb-1.5">
                 Category
               </label>
               <input
@@ -121,13 +126,13 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                placeholder="e.g. Commercial Platform"
-                className="w-full p-3 bg-black text-white text-xs sm:text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none"
+                placeholder="e.g. E-Commerce"
+                className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider mb-1.5 text-white">
+              <label className="block text-xs font-medium text-zinc-300 mb-1.5">
                 Year
               </label>
               <input
@@ -136,13 +141,13 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
                 value={formData.year}
                 onChange={handleChange}
                 placeholder="2026"
-                className="w-full p-3 bg-black text-white text-xs sm:text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none"
+                className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider mb-1.5 text-white">
+            <label className="block text-xs font-medium text-zinc-300 mb-1.5">
               Technical Stack (comma separated)
             </label>
             <input
@@ -150,29 +155,29 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
               name="stack"
               value={formData.stack}
               onChange={handleChange}
-              placeholder="React 19, Tailwind CSS, Vite, Express, REST API"
-              className="w-full p-3 bg-black text-white text-xs sm:text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none"
+              placeholder="React 19, Tailwind CSS, Vite, Laravel, MySQL"
+              className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider mb-1.5 text-white">
-              Project Narrative &amp; Description *
+            <label className="block text-xs font-medium text-zinc-300 mb-1.5">
+              Description &amp; Overview *
             </label>
             <textarea
               rows={4}
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="Describe the architectural challenge, performance achievements, and key mechanics..."
+              placeholder="Describe the architecture, capabilities, and key features..."
               required
-              className="w-full p-3 bg-black text-white text-xs sm:text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none resize-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all resize-none"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider mb-1.5 text-white">
+              <label className="block text-xs font-medium text-zinc-300 mb-1.5">
                 Live URL
               </label>
               <input
@@ -181,12 +186,12 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
                 value={formData.liveUrl}
                 onChange={handleChange}
                 placeholder="https://..."
-                className="w-full p-3 bg-black text-white text-xs sm:text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none"
+                className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider mb-1.5 text-white">
+              <label className="block text-xs font-medium text-zinc-300 mb-1.5">
                 GitHub Repository URL
               </label>
               <input
@@ -195,31 +200,31 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
                 value={formData.githubUrl}
                 onChange={handleChange}
                 placeholder="https://github.com/..."
-                className="w-full p-3 bg-black text-white text-xs sm:text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none"
+                className="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-3 pt-2">
+          <div className="flex items-center gap-2.5 pt-1">
             <input
               type="checkbox"
               id="featured"
               name="featured"
               checked={formData.featured}
               onChange={handleChange}
-              className="w-4 h-4 accent-white cursor-pointer"
+              className="rounded border-zinc-700 bg-zinc-900 text-zinc-100 accent-zinc-100 cursor-pointer"
             />
-            <label htmlFor="featured" className="text-xs font-bold uppercase tracking-wider text-white cursor-pointer select-none">
-              Mark as Featured Project
+            <label htmlFor="featured" className="text-xs text-zinc-300 font-medium cursor-pointer select-none">
+              Featured project
             </label>
           </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 bg-white text-black font-black text-xs sm:text-sm uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white disabled:opacity-50 transition-colors cursor-pointer mt-4"
+            className="w-full py-3 px-4 rounded-xl bg-zinc-100 text-zinc-950 font-semibold text-xs sm:text-sm hover:bg-white shadow-xs transition-all cursor-pointer mt-3 disabled:opacity-50"
           >
-            {isSubmitting ? 'Registering In Backend...' : 'Commit Project To Backend →'}
+            {isSubmitting ? 'Saving Project...' : 'Save Project Record'}
           </button>
         </form>
 
@@ -227,4 +232,3 @@ export default function AddProjectModal({ isOpen, onClose, onProjectAdded }) {
     </div>
   );
 }
-

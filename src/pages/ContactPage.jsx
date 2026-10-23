@@ -1,5 +1,16 @@
 import { useState } from 'react';
 import { sendContact } from '../services/api';
+import {
+  Sparkles,
+  Mail,
+  Copy,
+  Check,
+  ArrowUpRight,
+  Send,
+  MapPin,
+  Clock,
+} from 'lucide-react';
+import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa6';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -33,20 +44,19 @@ export default function ContactPage() {
       if (result && result.success) {
         setStatus({
           type: 'success',
-          message: 'Inquiry Dispatched Successfully to Nabeel ✓',
+          message: 'Thank you! Your message was sent successfully. I will get back to you shortly.',
         });
         setForm({ name: '', email: '', message: '' });
       } else {
         setStatus({
           type: 'error',
-          message: result?.error || 'Failed to dispatch message. Please contact via WhatsApp.',
+          message: result?.error || 'Failed to send message. Please contact via WhatsApp or direct email.',
         });
       }
     } catch {
-      // Fake local fallback removed! Show honest notification to reach out directly.
       setStatus({
         type: 'error',
-        message: 'Server offline. Please reach out directly via WhatsApp (+92 308 7300960) or Email.',
+        message: 'Unable to reach backend service. Please reach out directly via WhatsApp (+92 308 7300960) or Email.',
       });
     } finally {
       setIsSubmitting(false);
@@ -57,120 +67,147 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-24 sm:pt-32 pb-20 sm:pb-28 bg-black text-white min-h-[calc(100vh-14rem)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-28">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+
         {/* Section Header */}
-        <div className="flex items-center justify-between border-b-2 border-white pb-3 mb-12 text-xs font-black uppercase tracking-widest text-white">
-          <span>05. Contact &amp; Dispatch</span>
-          <span className="hidden sm:inline">Page: contact</span>
+        <div className="flex items-center justify-between pb-3 mb-10 border-b border-white/[0.08]">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
+            <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
+            <span>05 / Direct Communication</span>
+          </div>
+          <span className="text-xs text-zinc-500 font-mono">contact</span>
         </div>
 
         {/* Section Title */}
         <div className="mb-14">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-white max-w-4xl">
-            Dispatch a Brief.<br />
-            Start a Project.
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-100 max-w-3xl leading-[1.12]">
+            Let&apos;s start a conversation.
           </h1>
-          <p className="text-sm sm:text-base font-light text-neutral-400 mt-4 max-w-2xl leading-relaxed">
-            Accepting select commissions, frontend contract engineering, and full-stack engineering roles worldwide.
+          <p className="mt-4 text-base sm:text-lg text-zinc-400 max-w-2xl font-normal leading-relaxed">
+            Interested in working together or discussing potential projects? Send a message through the form or connect directly through my channels.
           </p>
         </div>
 
         {/* Two-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
           {/* Info Column */}
-          <div className="lg:col-span-5 space-y-6">
-            
+          <div className="lg:col-span-5 space-y-5">
+
             {/* Direct Channel Box */}
-            <div className="border-2 border-white bg-black">
-              <div className="bg-white text-black p-3.5 text-xs font-black uppercase flex justify-between">
-                <span>Direct Channel</span>
+            <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 space-y-4">
+              <div className="flex items-center justify-between text-xs font-mono uppercase text-zinc-400 pb-3 border-b border-white/[0.06]">
+                <span>Direct Inbox</span>
                 <span>Monitored Daily</span>
               </div>
-              <div className="p-6 space-y-4">
-                <div className="text-lg font-black text-white break-all">
-                  {emailAddress}
-                </div>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  <button
-                    type="button"
-                    onClick={handleCopyEmail}
-                    className="px-4 py-2 bg-white text-black font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-black hover:text-white cursor-pointer transition-colors"
-                  >
-                    {copied ? 'Copied to Clipboard ✓' : 'Copy Email Address'}
-                  </button>
-                  <a
-                    href={`mailto:${emailAddress}`}
-                    className="px-4 py-2 bg-black text-white font-black text-xs uppercase tracking-wider border-2 border-white hover:bg-white hover:text-black cursor-pointer transition-colors"
-                  >
-                    Open Mail Client ↗
-                  </a>
-                </div>
+              <div className="text-base sm:text-lg font-semibold text-zinc-100 break-all">
+                {emailAddress}
+              </div>
+              <div className="flex flex-wrap gap-2 pt-1">
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-950 font-medium text-xs hover:bg-white shadow-xs transition-colors cursor-pointer"
+                >
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{copied ? 'Copied' : 'Copy Email'}</span>
+                </button>
+                <a
+                  href={`mailto:${emailAddress}`}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/[0.08] text-zinc-300 hover:text-white hover:border-zinc-700 font-medium text-xs transition-colors cursor-pointer"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>Open Mail</span>
+                  <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                </a>
               </div>
             </div>
 
             {/* Coordinates & Response Telemetry */}
-            <div className="border-2 border-white p-5 text-xs space-y-3 bg-black">
-              <div className="text-neutral-500 font-bold uppercase tracking-wider">
+            <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 text-xs space-y-3">
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/[0.06]">
                 Availability Parameters
               </div>
-              <div className="flex justify-between border-b border-neutral-800 pb-2">
-                <span className="text-neutral-400">Base Location:</span>
-                <span className="font-bold text-white">Multan, Punjab, PK (UTC+5)</span>
+              <div className="flex justify-between items-center py-1">
+                <span className="text-zinc-500 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Base Location</span>
+                </span>
+                <span className="text-zinc-200 font-medium">Multan, Pakistan</span>
               </div>
-              <div className="flex justify-between border-b border-neutral-800 pb-2">
-                <span className="text-neutral-400">Response Window:</span>
-                <span className="font-bold text-white">Within 24 Hours</span>
+              <div className="flex justify-between items-center py-1">
+                <span className="text-zinc-500 flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>Response Time</span>
+                </span>
+                <span className="text-zinc-200 font-medium">Within 24 Hours</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-neutral-400">Status:</span>
-                <span className="bg-white text-black font-black px-2 py-0.5 uppercase">Available</span>
+              <div className="flex justify-between items-center pt-2 border-t border-white/[0.06]">
+                <span className="text-zinc-500">Current Status</span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Available for Hire
+                </span>
               </div>
             </div>
 
-            {/* External Links */}
-            <div className="border-2 border-white p-5 text-xs space-y-3 bg-black">
-              <div className="text-neutral-500 font-bold uppercase tracking-wider">
-                Public Profiles
+            {/* Public Links */}
+            <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 text-xs space-y-3">
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/[0.06]">
+                Social Profiles
               </div>
-              <div className="flex flex-col gap-2 pt-1 font-bold">
+              <div className="space-y-1.5 pt-1">
                 <a
                   href="https://github.com/NabeelAhmed8"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/50 hover:bg-zinc-800/60 border border-white/[0.04] text-zinc-300 hover:text-white transition-colors"
                 >
-                  <span>GitHub Archive</span>
-                  <span>↗</span>
+                  <span className="flex items-center gap-2">
+                    <FaGithub className="w-4 h-4 text-zinc-400" />
+                    <span>GitHub</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
                 </a>
+
                 <a
                   href="https://www.linkedin.com/in/nabeel-ahmed-447861238/"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/50 hover:bg-zinc-800/60 border border-white/[0.04] text-zinc-300 hover:text-white transition-colors"
                 >
-                  <span>LinkedIn Network</span>
-                  <span>↗</span>
+                  <span className="flex items-center gap-2">
+                    <FaLinkedin className="w-4 h-4 text-zinc-400" />
+                    <span>LinkedIn</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
                 </a>
+
                 <a
                   href="https://www.instagram.com/nabeelprojects"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/50 hover:bg-zinc-800/60 border border-white/[0.04] text-zinc-300 hover:text-white transition-colors"
                 >
-                  <span>Instagram</span>
-                  <span>↗</span>
+                  <span className="flex items-center gap-2">
+                    <FaInstagram className="w-4 h-4 text-zinc-400" />
+                    <span>Instagram</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
                 </a>
+
                 <a
                   href="https://wa.me/923087300960"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex justify-between p-2.5 border border-white hover:bg-white hover:text-black transition-colors"
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/50 hover:bg-zinc-800/60 border border-white/[0.04] text-zinc-300 hover:text-white transition-colors"
                 >
-                  <span>WhatsApp</span>
-                  <span>↗</span>
+                  <span className="flex items-center gap-2">
+                    <FaWhatsapp className="w-4 h-4 text-emerald-400" />
+                    <span>WhatsApp</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
                 </a>
               </div>
             </div>
@@ -181,91 +218,97 @@ export default function ContactPage() {
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
-              className="border-2 border-white bg-black"
+              className="p-6 sm:p-8 rounded-2xl border border-white/[0.07] bg-zinc-900/30 backdrop-blur-xs space-y-5"
             >
-              <div className="bg-white text-black p-3.5 text-xs font-black uppercase flex justify-between">
+              <div className="flex items-center justify-between pb-3 border-b border-white/[0.06] text-xs font-mono uppercase text-zinc-400">
+                <span>Inquiry Dispatch</span>
                 <span>Send a Message</span>
-                <span>Inquiry Form</span>
               </div>
 
-              <div className="p-6 sm:p-8 space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-xs font-black uppercase tracking-wider text-white mb-2"
-                  >
-                    01. Your Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Enter your full name..."
-                    required
-                    className="w-full p-3.5 bg-black text-white text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none focus:placeholder-neutral-400"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs font-black uppercase tracking-wider text-white mb-2"
-                  >
-                    02. Your Email Address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="Enter your email address..."
-                    required
-                    className="w-full p-3.5 bg-black text-white text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none focus:placeholder-neutral-400"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-xs font-black uppercase tracking-wider text-white mb-2"
-                  >
-                    03. Message &amp; Project Details
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="State your project goals, timeline, or contract requirements..."
-                    required
-                    className="w-full p-3.5 bg-black text-white text-sm border-2 border-white placeholder-neutral-600 focus:bg-white focus:text-black focus:outline-none focus:placeholder-neutral-400 resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 font-black text-sm uppercase tracking-wider border-2 transition-colors cursor-pointer disabled:opacity-50 ${
-                    status.type === 'error'
-                      ? 'bg-red-950 text-white border-red-500'
-                      : status.type === 'success'
-                      ? 'bg-green-950 text-white border-green-500'
-                      : 'bg-white text-black border-white hover:bg-black hover:text-white'
-                  }`}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-xs font-medium text-zinc-300 mb-2"
                 >
-                  {isSubmitting
-                    ? 'Dispatching Message...'
-                    : status.message
-                    ? status.message
-                    : 'Send Message →'}
-                </button>
+                  Your Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="e.g. John Doe"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
+                />
               </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-xs font-medium text-zinc-300 mb-2"
+                >
+                  Your Email Address
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="e.g. john@example.com"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-medium text-zinc-300 mb-2"
+                >
+                  Message &amp; Project Overview
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Describe your project, timeline, or requirements..."
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all resize-none"
+                />
+              </div>
+
+              {status.message && (
+                <div
+                  className={`p-4 rounded-xl text-xs leading-relaxed border ${status.type === 'error'
+                      ? 'bg-red-500/10 border-red-500/20 text-red-300'
+                      : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
+                    }`}
+                >
+                  {status.message}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-zinc-100 text-zinc-950 font-semibold text-sm hover:bg-white shadow-xs transition-all cursor-pointer disabled:opacity-50 active:scale-[0.99]"
+              >
+                {isSubmitting ? (
+                  <span>Sending Message...</span>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send className="w-4 h-4" />
+                  </>
+                )}
+              </button>
             </form>
           </div>
 
@@ -275,4 +318,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

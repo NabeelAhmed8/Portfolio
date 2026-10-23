@@ -1,15 +1,64 @@
+import { Mail, ArrowUpRight } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa6';
+import Logo from './Logo';
+
 export default function Footer() {
   return (
-    <footer className="border-t-2 border-white bg-black py-8 text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <div className="text-center sm:text-left">
-          <div className="font-black uppercase tracking-wider text-white">
-            Nabeel Ahmed Dhillon • Full Stack Web Developer
+    <footer className="border-t border-white/[0.08] bg-[#09090b] py-12 text-zinc-400">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/[0.06]">
+
+          <div className="flex items-center gap-3">
+            <Logo size={28} />
+            <div>
+              <div className="font-semibold text-zinc-200 text-sm">
+                Nabeel Ahmed Dhillon
+              </div>
+              <div className="text-xs text-zinc-500">
+                Full Stack Web Developer • Available for worldwide opportunities
+              </div>
+            </div>
           </div>
+
+          <div className="flex items-center gap-3 text-xs">
+            <a
+              href="https://github.com/NabeelAhmed8"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+            >
+              <FaGithub className="w-3.5 h-3.5" />
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/nabeel-ahmed-447861238/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+            >
+              <FaLinkedin className="w-3.5 h-3.5" />
+              <span>LinkedIn</span>
+            </a>
+            <a
+              href="mailto:nabeelprojects@hotmail.com"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>Email</span>
+            </a>
+          </div>
+
         </div>
 
-        <div className="text-neutral-500 uppercase font-bold text-[11px]">
-          © {new Date().getFullYear()} All Rights Reserved
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-500">
+          <div>
+            © {new Date().getFullYear()} Nabeel Ahmed Dhillon. All rights reserved.
+          </div>
+          <div className="flex items-center gap-1.5 text-zinc-500">
+            <span>Designed with minimalist principles</span>
+            <span>•</span>
+            <span className="text-zinc-400">React &amp; Tailwind</span>
+          </div>
         </div>
       </div>
     </footer>

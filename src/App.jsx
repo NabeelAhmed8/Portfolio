@@ -6,7 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopOnRoute from './components/ScrollToTopOnRoute';
 import WhatsAppButton from './components/WhatsAppButton';
 
-// Separate Page Components
+// Multi-Page Components
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import SkillsPage from './pages/SkillsPage';
@@ -15,7 +15,6 @@ import ExperiencePage from './pages/ExperiencePage';
 import ContactPage from './pages/ContactPage';
 
 export default function App() {
-
   useEffect(() => {
     // Disable automatic browser scroll restoration on refresh
     if ('scrollRestoration' in window.history) {
@@ -34,7 +33,15 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col font-sans selection:bg-zinc-800 selection:text-zinc-100 relative">
+      {/* Subtle Ambient Radial Glow at top */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 overflow-hidden"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-gradient-to-b from-zinc-700/15 via-zinc-800/5 to-transparent blur-3xl opacity-60" />
+      </div>
+
       {/* Scroll restoration helper when navigating across different pages */}
       <ScrollToTopOnRoute />
 

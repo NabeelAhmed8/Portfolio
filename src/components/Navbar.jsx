@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
 
 const navLinks = [
@@ -15,61 +16,69 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b-2 border-white text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
-        
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#09090b]/85 border-b border-white/[0.08] transition-all">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+
         {/* Brand */}
         <Link
           to="/"
           onClick={() => setIsOpen(false)}
           className="flex items-center gap-3 group cursor-pointer"
         >
-          <Logo size={26} />
-          <span className="font-bold text-sm uppercase tracking-wider text-white group-hover:bg-white group-hover:text-black px-1.5 py-0.5 transition-colors">
-            Nabeel Dhillon
-          </span>
+          <Logo size={28} />
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm tracking-tight text-zinc-100 group-hover:text-white transition-colors">
+              Nabeel Dhillon
+            </span>
+            <span className="text-[10px] text-zinc-400 tracking-wide font-mono -mt-0.5 hidden sm:block">
+              Full Stack Engineer
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1.5">
+        <nav className="hidden md:flex items-center gap-1 bg-zinc-900/60 p-1 rounded-full border border-white/[0.06]">
           {navLinks.map((item) => (
             <NavLink
               key={item.label}
               to={item.path}
               end={item.path === '/'}
               className={({ isActive }) =>
-                `text-xs font-bold uppercase tracking-wider px-3 py-1.5 transition-colors ${
-                  isActive
-                    ? 'bg-white text-black font-black'
-                    : 'text-white hover:bg-white hover:text-black'
+                `text-xs font-medium px-3.5 py-1.5 rounded-full transition-all duration-150 ${isActive
+                  ? 'bg-zinc-800 text-white shadow-xs'
+                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40'
                 }`
               }
             >
               {item.label}
             </NavLink>
           ))}
-
-          <Link
-            to="/contact"
-            className="ml-2 text-xs font-black uppercase tracking-wider px-4 py-2 bg-white text-black border-2 border-white hover:bg-black hover:text-white cursor-pointer transition-colors"
-          >
-            Hire Me
-          </Link>
         </nav>
 
-        {/* Mobile Toggle Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-          className="md:hidden font-bold text-xs uppercase px-3 py-1 border-2 border-white bg-black text-white hover:bg-white hover:text-black cursor-pointer"
-        >
-          {isOpen ? 'Close' : 'Menu'}
-        </button>
+        {/* CTA & Mobile Toggle */}
+        <div className="flex items-center gap-2">
+          <Link
+            to="/contact"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-4 py-1.5 bg-zinc-100 text-zinc-950 hover:bg-white rounded-full transition-all duration-150 shadow-xs hover:shadow-sm"
+          >
+            <span>Hire Me</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
+
+          {/* Mobile Toggle Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation menu"
+            className="md:hidden p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900 transition-colors cursor-pointer"
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden bg-black border-t-2 border-white px-4 py-4 space-y-2">
+        <div className="md:hidden bg-[#09090b]/95 backdrop-blur-2xl border-b border-white/[0.08] px-5 py-4 space-y-1">
           {navLinks.map((item) => (
             <NavLink
               key={item.label}
@@ -77,10 +86,9 @@ export default function Navbar() {
               end={item.path === '/'}
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `block text-sm font-bold uppercase tracking-wider px-3 py-2 transition-colors ${
-                  isActive
-                    ? 'bg-white text-black font-black'
-                    : 'text-white hover:bg-white hover:text-black'
+                `block text-sm font-medium px-3.5 py-2.5 rounded-lg transition-colors ${isActive
+                  ? 'bg-zinc-850 text-white font-semibold'
+                  : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/60'
                 }`
               }
             >
@@ -88,13 +96,16 @@ export default function Navbar() {
             </NavLink>
           ))}
 
-          <Link
-            to="/contact"
-            onClick={() => setIsOpen(false)}
-            className="block text-center mt-3 font-black text-xs uppercase px-4 py-2.5 bg-white text-black border-2 border-white hover:bg-black hover:text-white cursor-pointer transition-colors"
-          >
-            Hire Me
-          </Link>
+          <div className="pt-3 border-t border-white/[0.06]">
+            <Link
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center gap-2 text-center text-xs font-medium px-4 py-2.5 bg-zinc-100 text-zinc-950 hover:bg-white rounded-lg transition-colors cursor-pointer"
+            >
+              <span>Get in Touch</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
       )}
     </header>
