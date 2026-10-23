@@ -5,14 +5,14 @@ export default function HomePage() {
     { code: '01', title: 'Profile & Philosophy', path: '/about', desc: 'Minimalist standards, core engineering ethos, and vital metrics.' },
     { code: '02', title: 'Technical Arsenal', path: '/skills', desc: 'Full-stack languages, frameworks, databases, and dev tools.' },
     { code: '03', title: 'Selected Work', path: '/projects', desc: 'High-contrast production platforms including AURA and Nocturne.' },
-    { code: '04', title: 'Experience Log', path: '/experience', desc: 'Junior Full Stack Developer record and operational background.' },
+    { code: '04', title: 'Experience Log', path: '/experience', desc: 'Full Stack Web Developer record and operational background.' },
     { code: '05', title: 'Direct Dispatch', path: '/contact', desc: 'Commission inquiries, project briefs, and communication channels.' },
   ];
 
   return (
     <div className="pt-24 sm:pt-32 pb-20 sm:pb-28 bg-black text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        
+
         {/* Status Bar */}
         <div className="inline-flex items-center gap-3 border-2 border-white bg-black px-4 py-1.5 mb-8 text-xs font-bold uppercase tracking-wider text-white">
           <span className="inline-block w-2.5 h-2.5 bg-white animate-pulse" />
@@ -22,7 +22,7 @@ export default function HomePage() {
         {/* Monumental Brutalist Title */}
         <div className="space-y-3 mb-8">
           <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.85] text-white select-none">
-            Junior Full Stack Web<br />
+            Full Stack Web<br />
             Developer.
           </h1>
           <div className="text-lg sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white pt-2 border-l-4 border-white pl-4">

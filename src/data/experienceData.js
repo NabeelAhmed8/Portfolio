@@ -1,7 +1,7 @@
 export const defaultExperiences = [
   {
     "id": "exp-01",
-    "role": "Junior Full Stack Web Developer",
+    "role": "Full Stack Web Developer",
     "category": "dev",
     "company": "Freelance / Independent Full Stack Developer",
     "period": "1+ Year Experience (2024 — Present)",

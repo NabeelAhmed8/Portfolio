@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
         <div className="text-center sm:text-left">
           <div className="font-black uppercase tracking-wider text-white">
-            Nabeel Ahmed Dhillon • Junior Full Stack Developer
+            Nabeel Ahmed Dhillon • Full Stack Web Developer
           </div>
         </div>
 
