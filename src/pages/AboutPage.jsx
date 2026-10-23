@@ -20,8 +20,13 @@ export default function AboutPage() {
     },
   ];
 
+  const startYear = 2025;
+  const currentYear = new Date().getFullYear();
+  const expYears = Math.max(1, currentYear - startYear);
+  const expFormatted = `${expYears}+ Year${expYears > 1 ? 's' : ''}`;
+
   const metrics = [
-    { number: '01+', label: 'Years Experience', sub: 'Full stack web development' },
+    { number: expFormatted, label: 'Experience', sub: '2025 — Present' },
     { number: '10+', label: 'Core Technologies', sub: 'React, Laravel, Node, DBs' },
     { number: '100%', label: 'Responsive Layouts', sub: 'Mobile-first fluid design' },
     { number: '<24h', label: 'Response Window', sub: 'Prompt direct communication' },
@@ -32,12 +37,11 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="flex items-center justify-between pb-3 mb-10 border-b border-white/[0.08]">
+        <div className="flex items-center pb-3 mb-10 border-b border-white/[0.08]">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
             <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
-            <span>01 / Profile &amp; Background</span>
+            <span>Profile &amp; Background</span>
           </div>
-          <span className="text-xs text-zinc-500 font-mono">about</span>
         </div>
 
         {/* Headline */}

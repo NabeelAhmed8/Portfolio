@@ -1,4 +1,4 @@
-import { Mail, ArrowUpRight } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import Logo from './Logo';
 
@@ -54,10 +54,8 @@ export default function Footer() {
           <div>
             © {new Date().getFullYear()} Nabeel Ahmed Dhillon. All rights reserved.
           </div>
-          <div className="flex items-center gap-1.5 text-zinc-500">
-            <span>Designed with minimalist principles</span>
-            <span>•</span>
-            <span className="text-zinc-400">React &amp; Tailwind</span>
+          <div className="text-zinc-500">
+            Full Stack Web Engineering &amp; Architecture
           </div>
         </div>
       </div>

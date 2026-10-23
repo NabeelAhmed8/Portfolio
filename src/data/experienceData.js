@@ -1,12 +1,12 @@
 export const defaultExperiences = [
   {
-    "id": "exp-01",
-    "role": "Full Stack Web Developer",
-    "category": "dev",
-    "company": "Freelance / Independent Full Stack Developer",
-    "period": "1+ Year Experience (2024 — Present)",
-    "location": "Multan, Pakistan / Remote",
-    "points": [
+    id: "exp-01",
+    role: "Full Stack Web Developer",
+    category: "dev",
+    company: "Freelance / Independent Full Stack Developer",
+    period: "2025 — Present",
+    location: "Multan, Pakistan / Remote",
+    points: [
       "Engineered end-to-end responsive web applications using HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, React, and React Vite.",
       "Architected backend services, authentication flows, and RESTful APIs utilizing PHP and Laravel framework.",
       "Designed, maintained, and queried database systems using MongoDB and MySQL for persistent data storage.",

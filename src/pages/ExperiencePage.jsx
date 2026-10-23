@@ -22,12 +22,11 @@ export default function ExperiencePage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="flex items-center justify-between pb-3 mb-10 border-b border-white/[0.08]">
+        <div className="flex items-center pb-3 mb-10 border-b border-white/[0.08]">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
             <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
-            <span>04 / Professional Experience</span>
+            <span>Professional Experience</span>
           </div>
-          <span className="text-xs text-zinc-500 font-mono">experience</span>
         </div>
 
         {/* Section Title & Filter Tabs */}
@@ -51,8 +50,8 @@ export default function ExperiencePage() {
                 key={tab.value}
                 onClick={() => setActiveTab(tab.value)}
                 className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer ${activeTab === tab.value
-                    ? 'bg-zinc-100 text-zinc-950 shadow-xs'
-                    : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40'
+                  ? 'bg-zinc-100 text-zinc-950 shadow-xs'
+                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40'
                   }`}
               >
                 {tab.label}

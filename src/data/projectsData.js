@@ -10,7 +10,7 @@ export const defaultProjects = [
     githubUrl: null,
     status: 'Deployment Pending / Staging',
     featured: true,
-    year: '2025',
+    year: '2026',
   },
   {
     id: '02',
@@ -23,6 +23,6 @@ export const defaultProjects = [
     githubUrl: null,
     status: 'Deployment Pending / Staging',
     featured: true,
-    year: '2025',
+    year: '2026',
   },
 ];

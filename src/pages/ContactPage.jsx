@@ -71,12 +71,11 @@ export default function ContactPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="flex items-center justify-between pb-3 mb-10 border-b border-white/[0.08]">
+        <div className="flex items-center pb-3 mb-10 border-b border-white/[0.08]">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
             <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
-            <span>05 / Direct Communication</span>
+            <span>Direct Communication &amp; Inquiry</span>
           </div>
-          <span className="text-xs text-zinc-500 font-mono">contact</span>
         </div>
 
         {/* Section Title */}
@@ -287,8 +286,8 @@ export default function ContactPage() {
               {status.message && (
                 <div
                   className={`p-4 rounded-xl text-xs leading-relaxed border ${status.type === 'error'
-                      ? 'bg-red-500/10 border-red-500/20 text-red-300'
-                      : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
+                    ? 'bg-red-500/10 border-red-500/20 text-red-300'
+                    : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
                     }`}
                 >
                   {status.message}

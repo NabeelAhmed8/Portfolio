@@ -66,7 +66,7 @@ export default function ProjectModal({ project, onClose }) {
           <div>
             <div className="flex items-center gap-2 text-xs text-zinc-500 mb-1.5 font-mono">
               <Calendar className="w-3.5 h-3.5" />
-              <span>Project Year: {project.year || '2025'}</span>
+              <span>Project Year: {project.year || '2026'}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
               {project.title}

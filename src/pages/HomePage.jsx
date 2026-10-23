@@ -50,10 +50,15 @@ export default function HomePage() {
     },
   ];
 
+  const startYear = 2025;
+  const currentYear = new Date().getFullYear();
+  const expYears = Math.max(1, currentYear - startYear);
+  const expLabel = `${expYears}+ Year${expYears > 1 ? 's' : ''} (2025 — Present)`;
+
   const highlights = [
     { label: 'Specialty', value: 'Full Stack Web Developer' },
     { label: 'Location', value: 'Multan, Pakistan (Remote)' },
-    { label: 'Experience', value: '1+ Years Production Work' },
+    { label: 'Experience', value: expLabel },
     { label: 'Focus', value: 'React, Laravel, Tailwind & DBs' },
   ];
 
@@ -122,12 +127,11 @@ export default function HomePage() {
 
         {/* Directory Navigator */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+          <div className="flex items-center pb-3 border-b border-white/[0.08]">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
               <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
               <span>Explore Portfolio</span>
             </div>
-            <span className="text-xs text-zinc-500 font-mono">05 Sections</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
