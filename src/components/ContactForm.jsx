@@ -52,7 +52,7 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       className="p-6 sm:p-8 rounded-2xl border border-white/[0.07] bg-zinc-900/30 backdrop-blur-xs space-y-5"
     >
-      <div className="flex items-center justify-between pb-3 border-b border-white/[0.06] text-xs font-mono uppercase text-zinc-400">
+      <div className="flex items-center justify-between pb-3 border-b border-white/6 text-xs font-mono uppercase text-zinc-400">
         <span>Inquiry Dispatch</span>
         <span>Send a Message</span>
       </div>
@@ -73,7 +73,7 @@ export default function ContactForm() {
           onChange={handleChange}
           placeholder="e.g. John Doe"
           required
-          className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/8 placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
         />
       </div>
 
@@ -93,7 +93,7 @@ export default function ContactForm() {
           onChange={handleChange}
           placeholder="e.g. john@example.com"
           required
-          className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/8 placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all"
         />
       </div>
 
@@ -112,7 +112,7 @@ export default function ContactForm() {
           onChange={handleChange}
           placeholder="Describe your project, timeline, or requirements..."
           required
-          className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/[0.08] placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 text-zinc-100 text-sm border border-white/8 placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all resize-none"
         />
       </div>
 

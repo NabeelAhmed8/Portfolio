@@ -10,7 +10,7 @@ export default function ProjectCard({ project, onSelect }) {
           <span className="text-xs font-mono text-zinc-500">
             {project.id}
           </span>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-900 border border-white/[0.08] text-xs text-zinc-300">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-900 border border-white/8 text-xs text-zinc-300">
             <Tag className="w-3 h-3 text-zinc-400" />
             <span>{project.category}</span>
           </span>
@@ -35,7 +35,7 @@ export default function ProjectCard({ project, onSelect }) {
           {project.stack?.map((item, idx) => (
             <span
               key={idx}
-              className="px-2.5 py-1 rounded-lg bg-zinc-900/80 border border-white/[0.06] text-xs text-zinc-300 font-medium"
+              className="px-2.5 py-1 rounded-lg bg-zinc-900/80 border border-white/6 text-xs text-zinc-300 font-medium"
             >
               {item}
             </span>

@@ -42,7 +42,7 @@ export default function ProjectsPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="flex items-center pb-3 mb-10 border-b border-white/[0.08]">
+        <div className="flex items-center pb-3 mb-10 border-b border-white/8">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
             <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
             <span>Featured Projects</span>

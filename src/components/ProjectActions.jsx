@@ -7,7 +7,7 @@ export default function ProjectActions({ project, onSelect }) {
   const hasGithub = isValidUrl(project?.githubUrl);
 
   return (
-    <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-white/[0.06]">
+    <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-white/6">
       {/* Live Demo Action */}
       {hasLive ? (
         <a
@@ -20,7 +20,7 @@ export default function ProjectActions({ project, onSelect }) {
           <ArrowUpRight className="w-3.5 h-3.5" />
         </a>
       ) : (
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/[0.06] text-zinc-500 text-xs font-medium cursor-not-allowed">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/6 text-zinc-500 text-xs font-medium cursor-not-allowed">
           <span>Live Demo (Pending)</span>
         </span>
       )}
@@ -31,13 +31,13 @@ export default function ProjectActions({ project, onSelect }) {
           href={project.githubUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/[0.08] text-zinc-300 hover:text-white hover:border-zinc-700 text-xs font-medium transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/8 text-zinc-300 hover:text-white hover:border-zinc-700 text-xs font-medium transition-colors cursor-pointer"
         >
           <FaGithub className="w-3.5 h-3.5" />
           <span>Source Code</span>
         </a>
       ) : (
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/[0.06] text-zinc-500 text-xs font-medium cursor-not-allowed">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/6 text-zinc-500 text-xs font-medium cursor-not-allowed">
           <span>Source Code (Private)</span>
         </span>
       )}
@@ -47,7 +47,7 @@ export default function ProjectActions({ project, onSelect }) {
         <button
           type="button"
           onClick={() => onSelect(project)}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-transparent border border-white/[0.08] text-zinc-400 hover:text-white hover:border-zinc-600 text-xs font-medium transition-colors cursor-pointer ml-auto"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-transparent border border-white/8 text-zinc-400 hover:text-white hover:border-zinc-600 text-xs font-medium transition-colors cursor-pointer ml-auto"
         >
           <Info className="w-3.5 h-3.5" />
           <span>View Specifications</span>

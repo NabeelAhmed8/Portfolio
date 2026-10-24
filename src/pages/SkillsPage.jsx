@@ -34,7 +34,7 @@ export default function SkillsPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="flex items-center pb-3 mb-10 border-b border-white/[0.08]">
+        <div className="flex items-center pb-3 mb-10 border-b border-white/8">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
             <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
             <span>Technical Stack &amp; Skills</span>
@@ -71,7 +71,7 @@ export default function SkillsPage() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-xl bg-zinc-800/60 border border-white/[0.06] text-zinc-300">
+                      <div className="p-2 rounded-xl bg-zinc-800/60 border border-white/6 text-zinc-300">
                         <Icon className="w-4 h-4" />
                       </div>
                       <h2 className="text-base sm:text-lg font-semibold text-zinc-100">
@@ -88,11 +88,11 @@ export default function SkillsPage() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.06]">
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/6">
                   {cat.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-3 py-1.5 rounded-lg bg-zinc-900/80 border border-white/[0.06] text-xs font-medium text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors cursor-default"
+                      className="px-3 py-1.5 rounded-lg bg-zinc-900/80 border border-white/6 text-xs font-medium text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors cursor-default"
                     >
                       {skill}
                     </span>

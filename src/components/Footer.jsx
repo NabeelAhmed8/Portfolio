@@ -4,9 +4,9 @@ import Logo from './Logo';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-[#09090b] py-12 text-zinc-400">
+    <footer className="border-t border-white/8 bg-zinc-950 py-12 text-zinc-400">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/[0.06]">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/6">
 
           <div className="flex items-center gap-3">
             <Logo size={28} />
@@ -25,7 +25,7 @@ export default function Footer() {
               href="https://github.com/NabeelAhmed8"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/8 bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
             >
               <FaGithub className="w-3.5 h-3.5" />
               <span>GitHub</span>
@@ -34,14 +34,14 @@ export default function Footer() {
               href="https://www.linkedin.com/in/nabeel-ahmed-447861238/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/8 bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
             >
               <FaLinkedin className="w-3.5 h-3.5" />
               <span>LinkedIn</span>
             </a>
             <a
               href="mailto:nabeelprojects@hotmail.com"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/8 bg-zinc-900/60 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>Email</span>

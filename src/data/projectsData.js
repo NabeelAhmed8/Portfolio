@@ -19,7 +19,7 @@ export const defaultProjects = [
     description:
       'Monochrome subterranean fashion platform designed for limited seasonal capsule drops. Incorporates aggressive typographic rhythm, high-density lookbook grid layouts, real-time inventory tiering, frictionless express checkout mechanics, and dark brutalist aesthetic execution.',
     stack: ['React 19', 'Tailwind CSS', 'Vite', 'RESTful Architecture', 'Responsive Grid'],
-    liveUrl: null,
+    liveUrl: 'https://nabeelahmed8.github.io/Nocturne/',
     githubUrl: null,
     status: 'Deployment Pending / Staging',
     featured: true,

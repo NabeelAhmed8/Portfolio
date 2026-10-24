@@ -29,7 +29,7 @@ export default function ContactInfo({ emailAddress = 'nabeelprojects@hotmail.com
     <div className="space-y-5">
       {/* Direct Channel Box */}
       <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 space-y-4">
-        <div className="flex items-center justify-between text-xs font-mono uppercase text-zinc-400 pb-3 border-b border-white/[0.06]">
+        <div className="flex items-center justify-between text-xs font-mono uppercase text-zinc-400 pb-3 border-b border-white/6">
           <span>Direct Inbox</span>
           <span>Monitored Daily</span>
         </div>
@@ -47,7 +47,7 @@ export default function ContactInfo({ emailAddress = 'nabeelprojects@hotmail.com
           </button>
           <a
             href={`mailto:${emailAddress}`}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/[0.08] text-zinc-300 hover:text-white hover:border-zinc-700 font-medium text-xs transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/8 text-zinc-300 hover:text-white hover:border-zinc-700 font-medium text-xs transition-colors cursor-pointer"
           >
             <Mail className="w-3.5 h-3.5" />
             <span>Open Mail</span>
@@ -58,7 +58,7 @@ export default function ContactInfo({ emailAddress = 'nabeelprojects@hotmail.com
 
       {/* Availability Parameters */}
       <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 text-xs space-y-3">
-        <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/[0.06]">
+        <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/6">
           Availability Parameters
         </div>
         <div className="flex justify-between items-center py-1">
@@ -75,7 +75,7 @@ export default function ContactInfo({ emailAddress = 'nabeelprojects@hotmail.com
           </span>
           <span className="text-zinc-200 font-medium">Within 24 Hours</span>
         </div>
-        <div className="flex justify-between items-center pt-2 border-t border-white/[0.06]">
+        <div className="flex justify-between items-center pt-2 border-t border-white/6">
           <span className="text-zinc-500">Current Status</span>
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -86,7 +86,7 @@ export default function ContactInfo({ emailAddress = 'nabeelprojects@hotmail.com
 
       {/* Social Profiles */}
       <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 text-xs space-y-3">
-        <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/[0.06]">
+        <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/6">
           Social Profiles
         </div>
         <div className="space-y-1.5 pt-1">
@@ -98,7 +98,7 @@ export default function ContactInfo({ emailAddress = 'nabeelprojects@hotmail.com
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/50 hover:bg-zinc-800/60 border border-white/[0.04] text-zinc-300 hover:text-white transition-colors"
+                className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/50 hover:bg-zinc-800/60 border border-white/4 text-zinc-300 hover:text-white transition-colors"
               >
                 <span className="flex items-center gap-2">
                   <Icon className={`w-4 h-4 ${item.iconClass || 'text-zinc-400'}`} />

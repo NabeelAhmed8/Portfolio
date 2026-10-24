@@ -37,7 +37,7 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="flex items-center pb-3 mb-10 border-b border-white/[0.08]">
+        <div className="flex items-center pb-3 mb-10 border-b border-white/8">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
             <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
             <span>Profile &amp; Background</span>
@@ -81,7 +81,7 @@ export default function AboutPage() {
                 {principles.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-5 rounded-xl border border-white/[0.06] bg-zinc-900/20 hover:border-white/[0.12] transition-colors"
+                    className="p-5 rounded-xl border border-white/6 bg-zinc-900/20 hover:border-white/12 transition-colors"
                   >
                     <div className="flex items-start gap-2.5">
                       <CheckCircle2 className="w-4 h-4 text-zinc-400 mt-0.5 shrink-0" />
@@ -105,7 +105,7 @@ export default function AboutPage() {
 
             {/* Minimalist Metrics Grid */}
             <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30">
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-5">
+              <div className="flex items-center justify-between pb-4 border-b border-white/6 mb-5">
                 <span className="text-xs font-mono uppercase tracking-wider text-zinc-400">
                   Key Metrics
                 </span>
@@ -114,7 +114,7 @@ export default function AboutPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 {metrics.map((m, idx) => (
-                  <div key={idx} className="p-3.5 rounded-xl bg-zinc-900/50 border border-white/[0.04]">
+                  <div key={idx} className="p-3.5 rounded-xl bg-zinc-900/50 border border-white/4">
                     <div className="text-2xl sm:text-3xl font-bold text-zinc-100">
                       {m.number}
                     </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
 
             {/* Quick Details Card */}
             <div className="p-6 rounded-2xl border border-white/[0.07] bg-zinc-900/30 space-y-3.5 text-xs">
-              <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/[0.06]">
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-2 border-b border-white/6">
                 Developer Details
               </div>
 
@@ -161,7 +161,7 @@ export default function AboutPage() {
                 <span className="text-zinc-200 font-medium">Full Stack (MERN / LAMP)</span>
               </div>
 
-              <div className="flex justify-between items-center pt-2 border-t border-white/[0.06]">
+              <div className="flex justify-between items-center pt-2 border-t border-white/6">
                 <span className="text-zinc-500">Current Status</span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />

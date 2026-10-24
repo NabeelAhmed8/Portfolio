@@ -69,7 +69,7 @@ export default function HomePage() {
         {/* Ambient Top Glow */}
         <div className="relative">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-white/[0.08] backdrop-blur-md mb-8">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-white/8 backdrop-blur-md mb-8">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -100,7 +100,7 @@ export default function HomePage() {
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900/70 border border-white/[0.1] text-zinc-300 hover:text-white hover:border-zinc-700 hover:bg-zinc-850 font-medium text-xs sm:text-sm transition-all duration-150 cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900/70 border border-white/10 text-zinc-300 hover:text-white hover:border-zinc-700 hover:bg-zinc-850 font-medium text-xs sm:text-sm transition-all duration-150 cursor-pointer"
             >
               <span>Get in Touch</span>
               <ArrowRight className="w-4 h-4" />
@@ -113,7 +113,7 @@ export default function HomePage() {
           {highlights.map((item, idx) => (
             <div
               key={idx}
-              className="p-4 sm:p-5 rounded-2xl border border-white/[0.06] bg-zinc-900/30 backdrop-blur-xs hover:border-white/[0.12] transition-colors"
+              className="p-4 sm:p-5 rounded-2xl border border-white/6 bg-zinc-900/30 backdrop-blur-xs hover:border-white/12 transition-colors"
             >
               <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-1">
                 {item.label}
@@ -127,7 +127,7 @@ export default function HomePage() {
 
         {/* Directory Navigator */}
         <div className="space-y-6">
-          <div className="flex items-center pb-3 border-b border-white/[0.08]">
+          <div className="flex items-center pb-3 border-b border-white/8">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
               <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
               <span>Explore Portfolio</span>
@@ -141,11 +141,11 @@ export default function HomePage() {
                 <Link
                   key={sec.path}
                   to={sec.path}
-                  className="group p-5 sm:p-6 rounded-2xl border border-white/[0.06] bg-zinc-900/30 hover:bg-zinc-900/70 hover:border-white/[0.15] transition-all duration-200 flex flex-col justify-between min-h-[170px]"
+                  className="group p-5 sm:p-6 rounded-2xl border border-white/6 bg-zinc-900/30 hover:bg-zinc-900/70 hover:border-white/15 transition-all duration-200 flex flex-col justify-between min-h-42.5"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="p-2 rounded-xl bg-zinc-800/60 border border-white/[0.06] text-zinc-400 group-hover:text-white transition-colors">
+                      <div className="p-2 rounded-xl bg-zinc-800/60 border border-white/6 text-zinc-400 group-hover:text-white transition-colors">
                         <Icon className="w-4 h-4" />
                       </div>
                       <span className="text-xs font-mono text-zinc-500 group-hover:text-zinc-400">
@@ -167,7 +167,7 @@ export default function HomePage() {
         </div>
 
         {/* Social / External Links Bar */}
-        <div className="mt-16 pt-8 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-white/8 flex flex-wrap items-center justify-between gap-4">
           <div className="text-xs font-mono text-zinc-500">
             CONNECT DIRECTLY
           </div>
@@ -176,7 +176,7 @@ export default function HomePage() {
               href="https://github.com/NabeelAhmed8"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/40 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/8 bg-zinc-900/40 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
             >
               <FaGithub className="w-3.5 h-3.5" />
               <span>GitHub</span>
@@ -185,14 +185,14 @@ export default function HomePage() {
               href="https://www.linkedin.com/in/nabeel-ahmed-447861238/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/40 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/8 bg-zinc-900/40 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
             >
               <FaLinkedin className="w-3.5 h-3.5" />
               <span>LinkedIn</span>
             </a>
             <a
               href="mailto:nabeelprojects@hotmail.com"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-zinc-900/40 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/8 bg-zinc-900/40 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>nabeelprojects@hotmail.com</span>

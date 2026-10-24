@@ -22,7 +22,7 @@ export default function ExperiencePage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="flex items-center pb-3 mb-10 border-b border-white/[0.08]">
+        <div className="flex items-center pb-3 mb-10 border-b border-white/8">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400">
             <Sparkles className="w-3.5 h-3.5 text-zinc-500" />
             <span>Professional Experience</span>
@@ -41,7 +41,7 @@ export default function ExperiencePage() {
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-full bg-zinc-900/60 border border-white/[0.06] self-start md:self-auto">
+          <div className="flex items-center gap-1.5 p-1 rounded-full bg-zinc-900/60 border border-white/6 self-start md:self-auto">
             {[
               { label: 'All Roles', value: 'all' },
               { label: 'Full Stack', value: 'dev' },
@@ -76,7 +76,7 @@ export default function ExperiencePage() {
               className="p-6 sm:p-8 rounded-2xl border border-white/[0.07] bg-zinc-900/30 hover:border-white/[0.14] transition-all"
             >
               {/* Header meta */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-white/[0.06] mb-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-white/6 mb-5">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-zinc-100">
                     {exp.role}
@@ -94,7 +94,7 @@ export default function ExperiencePage() {
                   </div>
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 self-start sm:self-center px-3 py-1 rounded-full bg-zinc-900 border border-white/[0.08] text-xs font-mono text-zinc-300">
+                <div className="inline-flex items-center gap-1.5 self-start sm:self-center px-3 py-1 rounded-full bg-zinc-900 border border-white/8 text-xs font-mono text-zinc-300">
                   <Calendar className="w-3 h-3 text-zinc-400" />
                   <span>{exp.period}</span>
                 </div>

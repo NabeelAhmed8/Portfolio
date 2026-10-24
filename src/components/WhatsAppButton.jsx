@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 left-6 z-40 group flex items-center gap-2.5 bg-zinc-900/90 hover:bg-zinc-850 backdrop-blur-md text-zinc-200 hover:text-white px-3.5 py-2.5 rounded-full border border-white/[0.1] hover:border-emerald-500/40 shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+      className="fixed bottom-6 left-6 z-40 group flex items-center gap-2.5 bg-zinc-900/90 hover:bg-zinc-850 backdrop-blur-md text-zinc-200 hover:text-white px-3.5 py-2.5 rounded-full border border-white/10 hover:border-emerald-500/40 shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
     >
       {/* WhatsApp SVG Icon with subtle green tint */}
       <span className="relative flex h-2.5 w-2.5">

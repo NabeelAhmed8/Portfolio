@@ -16,7 +16,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#09090b]/85 border-b border-white/[0.08] transition-all">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-zinc-950/85 border-b border-white/8 transition-all">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
 
         {/* Brand */}
@@ -37,7 +37,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1 bg-zinc-900/60 p-1 rounded-full border border-white/[0.06]">
+        <nav className="hidden md:flex items-center gap-1 bg-zinc-900/60 p-1 rounded-full border border-white/6">
           {navLinks.map((item) => (
             <NavLink
               key={item.label}
@@ -78,7 +78,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden bg-[#09090b]/95 backdrop-blur-2xl border-b border-white/[0.08] px-5 py-4 space-y-1">
+        <div className="md:hidden bg-zinc-950/95 backdrop-blur-2xl border-b border-white/8 px-5 py-4 space-y-1">
           {navLinks.map((item) => (
             <NavLink
               key={item.label}
@@ -96,7 +96,7 @@ export default function Navbar() {
             </NavLink>
           ))}
 
-          <div className="pt-3 border-t border-white/[0.06]">
+          <div className="pt-3 border-t border-white/6">
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}

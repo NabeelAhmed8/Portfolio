@@ -33,15 +33,15 @@ export default function ProjectModal({ project, onClose }) {
       }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-6 backdrop-blur-md animate-fade-in"
     >
-      <div className="w-full max-w-2xl bg-[#0d0d10] border border-white/[0.12] rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+      <div className="w-full max-w-2xl bg-[#0d0d10] border border-white/12 rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
         
         {/* Header */}
-        <div className="p-5 sm:p-6 border-b border-white/[0.08] flex items-center justify-between">
+        <div className="p-5 sm:p-6 border-b border-white/8 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <span className="text-xs font-mono text-zinc-500">
               [{project.id}]
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-900 border border-white/[0.08] text-xs text-zinc-300">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-900 border border-white/8 text-xs text-zinc-300">
               <Tag className="w-3 h-3 text-zinc-400" />
               <span>{project.category}</span>
             </span>
@@ -68,7 +68,7 @@ export default function ProjectModal({ project, onClose }) {
             </h2>
           </div>
 
-          <div className="p-4 sm:p-5 rounded-xl bg-zinc-900/50 border border-white/[0.06] space-y-2">
+          <div className="p-4 sm:p-5 rounded-xl bg-zinc-900/50 border border-white/6 space-y-2">
             <h3 className="text-xs font-mono uppercase tracking-wider text-zinc-400">
               System Overview &amp; Specifications
             </h3>
@@ -85,7 +85,7 @@ export default function ProjectModal({ project, onClose }) {
               {project.stack?.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-white/[0.06] text-xs font-medium text-zinc-300"
+                  className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-white/6 text-xs font-medium text-zinc-300"
                 >
                   {tech}
                 </span>
@@ -94,7 +94,7 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           {/* Action Row */}
-          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/[0.08]">
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/8">
             {hasLive ? (
               <a
                 href={project.liveUrl}
@@ -106,7 +106,7 @@ export default function ProjectModal({ project, onClose }) {
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             ) : (
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-900 border border-white/[0.06] text-zinc-500 text-xs font-medium cursor-not-allowed">
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-900 border border-white/6 text-zinc-500 text-xs font-medium cursor-not-allowed">
                 <span>Live Demo (Pending Deployment)</span>
               </span>
             )}
@@ -116,13 +116,13 @@ export default function ProjectModal({ project, onClose }) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-900 border border-white/[0.08] text-zinc-300 hover:text-white hover:border-zinc-700 text-xs sm:text-sm font-medium transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-900 border border-white/8 text-zinc-300 hover:text-white hover:border-zinc-700 text-xs sm:text-sm font-medium transition-colors cursor-pointer"
               >
                 <FaGithub className="w-4 h-4" />
                 <span>Source Repository</span>
               </a>
             ) : (
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-900 border border-white/[0.06] text-zinc-500 text-xs font-medium cursor-not-allowed">
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-900 border border-white/6 text-zinc-500 text-xs font-medium cursor-not-allowed">
                 <span>Repository (Private Access)</span>
               </span>
             )}
