@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
 import { X, ArrowUpRight, Calendar, Tag } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
-
-const isValidUrl = (url) =>
-  typeof url === 'string' &&
-  url.trim() !== '' &&
-  url.trim() !== '#' &&
-  (url.startsWith('http://') || url.startsWith('https://'));
+import { isValidUrl } from '../utils/url';
 
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
@@ -39,7 +34,7 @@ export default function ProjectModal({ project, onClose }) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-6 backdrop-blur-md animate-fade-in"
     >
       <div className="w-full max-w-2xl bg-[#0d0d10] border border-white/[0.12] rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
-
+        
         {/* Header */}
         <div className="p-5 sm:p-6 border-b border-white/[0.08] flex items-center justify-between">
           <div className="flex items-center gap-2.5">

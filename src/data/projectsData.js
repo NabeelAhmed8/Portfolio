@@ -6,9 +6,9 @@ export const defaultProjects = [
     description:
       'High-fashion digital flagship and e-commerce experience engineered for an independent luxury atelier. Features bespoke editorial lookbooks, a dynamic garment configurator, fluid interaction loops, seamless cart state management, and high-contrast typography reflecting minimalist couture aesthetics.',
     stack: ['React 19', 'Tailwind CSS', 'Vite', 'State Architecture', 'High-Contrast UI'],
-    liveUrl: null,
+    liveUrl: 'https://nabeelahmed8.github.io/Aura-Clothing/',
     githubUrl: null,
-    status: 'Deployment Pending / Staging',
+    status: 'Live / Production',
     featured: true,
     year: '2026',
   },
